@@ -7,12 +7,18 @@
 //   background: $primary-background;
 // }
 
+html {
+  height: 100vh;
+}
+
 body {
-  background-image: url("../images/city-skyline.jpg");
+  // background-image: url("../images/city-skyline.jpg");
+  background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
 .header-bar {
@@ -116,4 +122,62 @@ body {
   color: $light-white;
   font-family: $cabin-font;
   border-width: medium;
+}
+
+.customer-view {
+  display: flex;
+  flex-direction: row;
+}
+
+.room-inputs-container {
+  margin-left: 1em;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 100vh;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  background-color: $mid-grey;
+  margin: 1em;
+  padding: 1em;
+}
+
+.room-inputs-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.available-rooms {
+  margin: 1em;
+  background-color: $grey-white;
+  height: 75%;
+  width: 85%;
+  padding: 1em;
+}
+
+.bookings-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.bookings-header {
+  margin: 1em;
+}
+
+.customer-bookings {
+  background-color: $grey-white;
+  width: 85%;
+}
+
+.hidden {
+  display: none;
 }
