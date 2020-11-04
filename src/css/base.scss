@@ -1,7 +1,119 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+@import 'variables';
+// /* This is an example of using Sass, otherwise plain CSS works too*/
+// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+// ;
+//
+// body {
+//   background: $primary-background;
+// }
 
 body {
-  background: $primary-background;
+  background-image: url("../images/city-skyline.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+.header-bar {
+  background-color: $dark-grey;
+  color: $light-white;
+  margin: none;
+  height: 10%;
+  padding: 1%;
+  font-family: $cabin-font;
+}
+
+.hotel-name {
+  margin: 0;
+}
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+.welcome-greeting {
+  color: $light-white;
+  font-family: $cabin-font;
+}
+
+.login-layout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 45%;
+  background-color: $dark-grey;
+  border-radius: 5px;
+}
+
+.username-input {
+  margin: 1em;
+  border-radius: 5px;
+  border-style: solid;
+  height: 5%;
+  width: 85%;
+  padding: 2%;
+  color: $light-white;
+  background: none;
+  border-color: $light-white;
+}
+
+.password-input {
+  margin: 1em;
+  border-radius: 5px;
+  border-style: solid;
+  height: 5%;
+  width: 85%;
+  padding: 2%;
+  color: $light-white;
+  background: none;
+  border-color: $light-white;
+}
+
+::placeholder {
+  color: $light-white;
+  font-family: $cabin-font;
+  font-size: 12px;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.clear-button {
+  margin: 2.5em;
+  margin-top: 0;
+  width: 8em;
+  background: none;
+  border-style: solid;
+  border-color: $light-white;
+  border-radius: 5px;
+  padding: .5em;
+  color: $light-white;
+  font-family: $cabin-font;
+  border-width: medium;
+}
+
+.login-button {
+  margin: 2.5em;
+  margin-top: 0;
+  width: 8em;
+  background: none;
+  border-style: solid;
+  border-color: $light-white;
+  border-radius: 5px;
+  padding: .5em;
+  color: $light-white;
+  font-family: $cabin-font;
+  border-width: medium;
 }
