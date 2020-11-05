@@ -5,7 +5,7 @@ class User {
     this.users = userData;
     this.rooms = roomData;
     this.bookings = bookingData;
-  }
+  };
 
   userLogin(username, password, users) {
     let splitUsername = username.split('customer');
@@ -19,7 +19,7 @@ class User {
       }
     })
     return userInfo ? userInfo : 'Please enter a valid username and password.';
-  }
+  };
 
   searchAvailableRoomsByDate(date) {
     let roomsBooked = this.bookings.reduce((allBookedRooms, roomBooked ) => {
@@ -32,7 +32,15 @@ class User {
       return !roomsBooked.includes(room.number);
     });
     return roomsAvailable;
-  }
+  };
+
+  filterRoomsByType(roomType, availableRooms) {
+    let matchedRooms = availableRooms.filter((room) => {
+      return room.roomType === roomType;
+    })
+    return matchedRooms;
+  };
+
 }
 
 export default User;

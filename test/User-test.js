@@ -85,5 +85,10 @@ describe ('User class', () => {
       {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}]);
   });
 
-  
+  it('should filter available rooms by type', function () {
+    expect(user1.filterRoomsByType('single room', user1.searchAvailableRoomsByDate('2020/05/24'))).to.deep.equal([
+      {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}
+    ])
+  });
+
 })
