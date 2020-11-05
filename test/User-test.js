@@ -3,6 +3,7 @@ import User from '../src/user';
 
 describe ('User class', () => {
   let user1, user2, user3;
+
   beforeEach(() => {
     user1 = new User(1, 'Olga Morgan');
     user2 = new User(2, 'Elle Li');
