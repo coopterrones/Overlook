@@ -11,14 +11,10 @@ describe('Customer class', () => {
   let bookingData;
 
   beforeEach(() => {
-    user1 = new User(1, 'Olga Morgan', userData, roomData, bookingData);
-    user2 = new User(2, 'Elle Li', userData, roomData, bookingData);
-    user3 = new User(3, 'Cooper Terrones', userData, roomData, bookingData);
-    manager = new User('manager', 'John Wick', userData, roomData, bookingData);
-    userData = [user1, user2, user3, manager];
     customer1 = new Customer(1, 'John Doe', userData, roomData, bookingData);
     customer2 = new Customer(2, 'Don Joe', userData, roomData, bookingData);
     customer3 = new Customer(3, 'Joseph Donavan', userData, roomData, bookingData);
+    userData = [customer1, customer2, customer3, manager];
     roomData = [
       {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
       {"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
@@ -39,10 +35,10 @@ describe('Customer class', () => {
       {"id":"5fwrgu4i7k55hl6t8","userID":2,"date":"2020/07/15","roomNumber":2,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/07/15","roomNumber":4,"roomServiceCharges":[]},
     ];
-  })
+  });
   it('should be a function', function () {
     expect(Customer).to.be.a('function');
-  })
+  });
 
   it('should have a list of all bookings the customer has made', function () {
     customer1.getUserBookings(customer1.id);
@@ -53,5 +49,11 @@ describe('Customer class', () => {
       {"id":"5fwrgu4i7k55hl6t6","userID":1,"date":"2020/05/24","roomNumber":3,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":1,"date":"2020/07/15","roomNumber":1,"roomServiceCharges":[]},
     ]);
-  })
+  });
+
+  it('should be able to get a total amount spent on bookings for a customer', function () {
+    customer1.getTotalSpent();
+
+    expect(customer1.totalSpent).to.equal(1685.32);
+  });
 })
