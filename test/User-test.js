@@ -21,7 +21,6 @@ describe ('User class', () => {
       {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}
     ];
     bookingData = [
-
       {"id":"5fwrgu4i7k55hl6sz","userID":1,"date":"2020/04/22","roomNumber":1,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t5","userID":1,"date":"2020/05/12","roomNumber":2,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t6","userID":1,"date":"2020/05/24","roomNumber":3,"roomServiceCharges":[]},
@@ -31,6 +30,9 @@ describe ('User class', () => {
       {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/07/15","roomNumber":3,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/09/10","roomNumber":4,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/10/24","roomNumber":1,"roomServiceCharges":[]},
+      {"id":"5fwrgu4i7k55hl6t8","userID":1,"date":"2020/07/15","roomNumber":1,"roomServiceCharges":[]},
+      {"id":"5fwrgu4i7k55hl6t8","userID":2,"date":"2020/07/15","roomNumber":2,"roomServiceCharges":[]},
+      {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/07/15","roomNumber":4,"roomServiceCharges":[]},
 
     ];
 
@@ -89,6 +91,14 @@ describe ('User class', () => {
     expect(user1.filterRoomsByType('single room', user1.searchAvailableRoomsByDate('2020/05/24'))).to.deep.equal([
       {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}
     ])
+  });
+
+  it('should return a message to the user if no rooms are available on the given date', function () {
+    expect(user1.searchAvailableRoomsByDate('2020/07/15')).to.equal('We are very sorry. No available rooms on that date. Please modify your search.');
+  });
+
+  it('should return a message to the user if no rooms are available given a type', function () {
+    expect(user1.filterRoomsByType('residential suite', user1.searchAvailableRoomsByDate('2020/04/22'))).to.equal('We are very sorry. No available rooms on that date. Please modify your search.');
   });
 
 })
