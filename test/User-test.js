@@ -10,9 +10,9 @@ describe ('User class', () => {
 
   beforeEach(() => {
     user1 = new User(1, 'Olga Morgan', userData, roomData, bookingData);
-    user2 = new User(2, 'Elle Li');
-    user3 = new User(3, 'Cooper Terrones');
-    manager = new User('manager', 'John Wick');
+    user2 = new User(2, 'Elle Li', userData, roomData, bookingData);
+    user3 = new User(3, 'Cooper Terrones', userData, roomData, bookingData);
+    manager = new User('manager', 'John Wick', userData, roomData, bookingData);
     userData = [user1, user2, user3, manager];
     roomData = [
       {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
@@ -58,8 +58,12 @@ describe ('User class', () => {
   });
 
   it('should have rooms data', function () {
-    expect(user1.roomsData).to.equal()
-  })
+    expect(user1.rooms).to.deep.equal(roomData);
+  });
+
+  it('should have bookings data', function () {
+    expect(user1.bookings).to.deep.equal(bookingData);
+  });
 
   it('should be able to log into our application as a user', function () {
     expect(user1.userLogin('customer1', 'overlook2020', userData)).to.equal(user1);
