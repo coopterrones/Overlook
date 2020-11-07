@@ -31,6 +31,13 @@ class Manager extends User{
     }, 0)
     const percentOccupied = this.percentageOccupied = (occupied / this.rooms.length) * 100;
   }
+
+  getCustomerById(id) {
+    const currentUser = this.users.find((user) => {
+      return user.id === id;
+    })
+    return currentUser;
+  }
 }
 
 export default Manager;

@@ -49,6 +49,9 @@ describe('Manager class', () => {
     manager.getPercentageOccupied('2020/04/22');
 
     expect(manager.percentageOccupied).to.equal(50);
-  })
+  });
 
+  it('should be able to search all customers and get a current customer by id', function () {
+    expect(manager.getCustomerById(2)).to.deep.equal(customer2);
+  });
 });
