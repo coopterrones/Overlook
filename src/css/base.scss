@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  // background-image: url("../images/city-skyline.jpg");
+  background-image: url("../images/city-skyline.jpg");
   background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@ body {
   background-color: $dark-grey;
   color: $light-white;
   margin: none;
-  height: 10%;
+  height: 3%;
   padding: 1%;
   font-family: $cabin-font;
 }
