@@ -45,4 +45,10 @@ describe('Manager class', () => {
     expect(manager.totalRevenue).to.equal(835.78);
   });
 
+  it('should be able to get a total percentage of rooms occupied when given a date', function () {
+    manager.getPercentageOccupied('2020/04/22');
+
+    expect(manager.percentageOccupied).to.equal(50);
+  })
+
 });

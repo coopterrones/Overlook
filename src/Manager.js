@@ -19,6 +19,18 @@ class Manager extends User{
     const roundedAmount = totalRevenueForToday.toFixed(2)
     this.totalRevenue = parseFloat(roundedAmount);
   }
+
+  getPercentageOccupied(date) {
+    const occupied = this.bookings.reduce((sum, booking) => {
+      this.rooms.forEach((room) => {
+        if (booking.date === date && booking.roomNumber === room.number) {
+          sum += 1;
+        }
+      })
+      return sum;
+    }, 0)
+    const percentOccupied = this.percentageOccupied = (occupied / this.rooms.length) * 100;
+  }
 }
 
 export default Manager;
