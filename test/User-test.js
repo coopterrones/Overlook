@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import User from '../src/user';
+import User from '../src/User';
 
-describe ('User class', () => {
+describe('User class', () => {
   let userData;
   let user1, user2, user3;
   let manager;
@@ -9,11 +9,6 @@ describe ('User class', () => {
   let bookingData;
 
   beforeEach(() => {
-    user1 = new User(1, 'Olga Morgan', userData, roomData, bookingData);
-    user2 = new User(2, 'Elle Li', userData, roomData, bookingData);
-    user3 = new User(3, 'Cooper Terrones', userData, roomData, bookingData);
-    manager = new User('manager', 'John Wick', userData, roomData, bookingData);
-    userData = [user1, user2, user3, manager];
     roomData = [
       {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
       {"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
@@ -33,8 +28,12 @@ describe ('User class', () => {
       {"id":"5fwrgu4i7k55hl6t8","userID":1,"date":"2020/07/15","roomNumber":1,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":2,"date":"2020/07/15","roomNumber":2,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/07/15","roomNumber":4,"roomServiceCharges":[]},
-
     ];
+    user1 = new User(1, 'Olga Morgan', userData, roomData, bookingData);
+    user2 = new User(2, 'Elle Li', userData, roomData, bookingData);
+    user3 = new User(3, 'Cooper Terrones', userData, roomData, bookingData);
+    manager = new User('manager', 'John Wick', userData, roomData, bookingData);
+    userData = [user1, user2, user3, manager];
 
   });
   it('should be a function', function () {
