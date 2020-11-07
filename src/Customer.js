@@ -1,8 +1,8 @@
 import User from './User';
 
 class Customer extends User {
-  constructor(id, name, userData, roomData, bookingData) {
-    super(id, name, userData, roomData, bookingData);
+  constructor(id, name, roomData, bookingData) {
+    super(id, name, [], roomData, bookingData);
     this.myBookings = [];
     this.totalSpent = 0;
   }

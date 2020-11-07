@@ -1,6 +1,5 @@
 import {expect} from 'chai';
-import Customer from '../src/customer';
-import User from '../src/user';
+import Customer from '../src/Customer';
 
 describe('Customer class', () => {
   let customer1, customer2, customer3;
@@ -11,10 +10,7 @@ describe('Customer class', () => {
   let bookingData;
 
   beforeEach(() => {
-    customer1 = new Customer(1, 'John Doe', userData, roomData, bookingData);
-    customer2 = new Customer(2, 'Don Joe', userData, roomData, bookingData);
-    customer3 = new Customer(3, 'Joseph Donavan', userData, roomData, bookingData);
-    userData = [customer1, customer2, customer3, manager];
+    userData = [customer1, customer2, customer3];
     roomData = [
       {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
       {"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
@@ -35,6 +31,9 @@ describe('Customer class', () => {
       {"id":"5fwrgu4i7k55hl6t8","userID":2,"date":"2020/07/15","roomNumber":2,"roomServiceCharges":[]},
       {"id":"5fwrgu4i7k55hl6t8","userID":3,"date":"2020/07/15","roomNumber":4,"roomServiceCharges":[]},
     ];
+    customer1 = new Customer(1, 'John Doe', roomData, bookingData);
+    customer2 = new Customer(2, 'Don Joe', roomData, bookingData);
+    customer3 = new Customer(3, 'Joseph Donavan', roomData, bookingData);
   });
   it('should be a function', function () {
     expect(Customer).to.be.a('function');
