@@ -30,33 +30,24 @@ let yyyy = today.getFullYear();
 
 today = yyyy + '/' + mm + '/' + dd;
 
-
-
-// function createData() {
-// };
-
-
-
-// window.addEventListener('load', (event) => {
-//   createData();
-// });
-
 const loginButton = document.querySelector('.login-button');
 const clearButton = document.querySelector('.clear-button');
 const usernameInput = document.querySelector('.username-input');
 const passwordInput = document.querySelector('.password-input');
 const loginScreen = document.querySelector('.login-screen');
 const customerDashboard = document.querySelector('.customer-view');
-const bookingsArea = document.querySelector('.bookings-area');
+const bookingArea = document.querySelector('.bookings-area');
 const managerDashboard = document.querySelector('.manager-view');
 const customerName = document.querySelector('.customer-name');
 const dateInput = document.querySelector('.calendar-dropdown');
 const availableRooms = document.querySelector('.available-rooms');
+const customerBookings = document.querySelector('.customer-bookings');
+const roomTypeInput = document.getElementById('roomTypes-customer');
 
-//event Listener login buttons
 loginButton.addEventListener('click', userLogin);
 clearButton.addEventListener('click', clearInputs);
 dateInput.addEventListener('input', updateAvailableRooms);
+roomTypeInput.addEventListener('change', filterRoomsByType);
 
 function userLogin() {
   let user;
@@ -90,8 +81,9 @@ function createManager() {
 function displayCustomerDashboard() {
   loginScreen.classList.add('hidden');
   customerDashboard.classList.remove('hidden');
-  bookingsArea.classList.remove('hidden');
+  bookingArea.classList.remove('hidden');
   createCustomerDashboard();
+
 }
 
 // function displayManagerDashboard() {
@@ -115,11 +107,65 @@ function clearInputs(input) {
 function createCustomerDashboard() {
   customerName.innerText = customer.name;
   displayAvailableRooms(today);
+  getCustomerBookings();
 }
 
 function displayAvailableRooms(date) {
   const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
   allAvailableRooms.forEach((room) => {
+    let roomInfo = `
+    <p>Room Number: ${room.number}</p>
+    <p>Type: ${room.roomType}</p>
+    <p>Bidet: ${room.bidet}</p>
+    <p>Bed Size: ${room.bedSize}</p>
+    <p>Beds: ${room.numBeds}</p>
+    <p>Cost Per Night: $${room.costPerNight}</p>
+    `
+    availableRooms.insertAdjacentHTML('beforeend', roomInfo);
+  })
+}
+
+function getCustomerBookings() {
+  const allBookings = customer.bookings.reduce((allBookings, booking) => {
+    customer.rooms.forEach((room) => {
+      if (booking.userID === customer.id && booking.roomNumber === room.number) {
+        allBookings.push(booking);
+      }
+    })
+  return allBookings;
+  }, [])
+  displayCustomerBookings(allBookings);
+}
+
+function displayCustomerBookings(bookings) {
+  bookings.forEach((booking) => {
+    let bookingInfo = `
+    <p>Booking Confirmation: ${booking.id}</p>
+    <p>Date: ${booking.date}</p>
+    <p>Room Number: ${booking.roomNumber}</p>
+    `
+  customerBookings.insertAdjacentHTML('beforeend', bookingInfo);
+  })
+}
+
+function filterRoomsByType() {
+  let date = dateInput.value.replace(/-/g, "/");
+  const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
+  let roomTypeSelection = roomTypeInput.options[roomTypeInput.selectedIndex].value;
+  const allFilteredRooms = allAvailableRooms.reduce((allFiltered, room) => {
+    if (room.roomType === roomTypeSelection) {
+      allFiltered.push(room);
+    } else if (roomTypeSelection === 'all rooms') {
+      allFiltered.push(room);
+    }
+  return allFiltered;
+  }, [])
+  displayFilteredRooms(allFilteredRooms);
+}
+
+function displayFilteredRooms(allFilteredRooms) {
+  availableRooms.innerHTML = '';
+  allFilteredRooms.forEach((room) => {
     let roomInfo = `
     <p>Room Number: ${room.number}</p>
     <p>Type: ${room.roomType}</p>
