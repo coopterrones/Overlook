@@ -1,16 +1,15 @@
 let fetchAPI = {
   fetchUsers() {
-    let fetchedUsers = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+    return fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
       .then(response => response.json())
-      .then(data => data.users)
+      // .then(data => data.userData)
       .catch(error => console.log(error.message));
-      return fetchedUsers;
   },
 
   fetchRooms() {
     let fetchedRooms = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
     .then(response => response.json())
-    .then(data => data.rooms)
+    // .then(data => data.roomData)
     .catch(error => console.log(error.message));
     return fetchedRooms;
   },
@@ -18,7 +17,7 @@ let fetchAPI = {
   fetchBookings() {
     let fetchedBookings = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
     .then(response => response.json())
-    .then(data => data.bookings)
+    // .then(data => data.bookingData)
     .catch(error => console.log(error.message));
     return fetchedBookings;
   },

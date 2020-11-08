@@ -7,7 +7,7 @@
     <header class="header-bar">
       <h1 class="hotel-name">Overlook Hotel</h1>
     </header>
-    <section class="login-screen hidden">
+    <section class="login-screen">
       <div class="login-layout">
         <h2 class="welcome-greeting">Welcome to the Overlook Hotel!</h2>
         <input class="username-input" type="text" placeholder="username">
@@ -22,13 +22,13 @@
       <section class="user-info">
         <div class="user-profile">
           <img src="./images/user.png" alt="user-profile-pics" height="100px" width="100px">
-          <p class="customer-name">CUSTOMER PLACEHOLDER</p>
+          <p class="customer-name"></p>
         </div>
         <div class="room-inputs-container">
           <input class="calendar-dropdown" type="date" name="selectADate">
           <form class="select-room-type" action="index.html">
             <label for="roomTypes">Select a Room Type: </label>
-            <select name="roomTypes" id="roomTypes">
+            <select name="roomTypes" id="roomTypes-customer">
               <option value="singleRoom">Single Room</option>
               <option value="juniorSuite">Junior Suite</option>
               <option value="suite">Suite</option>
@@ -40,6 +40,29 @@
           <!-- <section class="available-rooms">
           </section> -->
         </div>
+      </section>
+      <section class= "manager-view hidden">
+        <section class="user-info">
+          <div class="user-profile">
+            <img src="./images/user.png" alt="user-profile-pics" height="100px" width="100px">
+            <p class="customer-name"></p>
+          </div>
+          <div class="room-inputs-container">
+            <input class="calendar-dropdown" type="date" name="selectADate">
+            <form class="select-room-type" action="index.html">
+              <label for="roomTypes">Select a Room Type: </label>
+              <select name="roomTypes" id="roomTypes-manager">
+                <option value="singleRoom">Single Room</option>
+                <option value="juniorSuite">Junior Suite</option>
+                <option value="suite">Suite</option>
+                <option value="residentialSuite">Residential Suite</option>
+              </select>
+            </form>
+          </div>
+          <div class="available-rooms">
+            <!-- <section class="available-rooms">
+            </section> -->
+          </div>
       </section>
       <section class="bookings-area hidden">
         <h2 class="bookings-header">Bookings Header</h2>
@@ -54,4 +77,5 @@
       </section>
     </section>
   </body>
+  <div id="slideBG"></div>
 </html>
