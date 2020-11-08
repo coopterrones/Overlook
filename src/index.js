@@ -51,6 +51,7 @@ const bookingsArea = document.querySelector('.bookings-area');
 const managerDashboard = document.querySelector('.manager-view');
 const customerName = document.querySelector('.customer-name');
 const dateInput = document.querySelector('.calendar-dropdown');
+const availableRooms = document.querySelector('.available-rooms');
 
 //event Listener login buttons
 loginButton.addEventListener('click', userLogin);
@@ -100,8 +101,10 @@ function displayCustomerDashboard() {
 // }
 
 function updateAvailableRooms() {
+  availableRooms.innerText = '';
   let date = dateInput.value.replace(/-/g, "/");
-  const availableRooms = customer.searchAvailableRoomsByDate(date);
+  const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
+  displayAvailableRooms(date);
 }
 
 function clearInputs(input) {
@@ -115,5 +118,16 @@ function createCustomerDashboard() {
 }
 
 function displayAvailableRooms(date) {
-  const availableRooms = customer.searchAvailableRoomsByDate(date);
+  const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
+  allAvailableRooms.forEach((room) => {
+    let roomInfo = `
+    <p>Room Number: ${room.number}</p>
+    <p>Type: ${room.roomType}</p>
+    <p>Bidet: ${room.bidet}</p>
+    <p>Bed Size: ${room.bedSize}</p>
+    <p>Beds: ${room.numBeds}</p>
+    <p>Cost Per Night: $${room.costPerNight}</p>
+    `
+    availableRooms.insertAdjacentHTML('beforeend', roomInfo);
+  })
 }
