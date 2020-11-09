@@ -36,18 +36,25 @@ const usernameInput = document.querySelector('.username-input');
 const passwordInput = document.querySelector('.password-input');
 const loginScreen = document.querySelector('.login-screen');
 const customerDashboard = document.querySelector('.customer-view');
-const bookingArea = document.querySelector('.bookings-area');
+const customerBookingArea = document.querySelector('.customer-bookings-area');
+const managerBookingArea = document.querySelector('.manager-bookings-area');
 const managerDashboard = document.querySelector('.manager-view');
 const customerName = document.querySelector('.customer-name');
-const dateInput = document.querySelector('.calendar-dropdown');
-const availableRooms = document.querySelector('.available-rooms');
+const managerName = document.querySelector('.manager-name');
+const customerDateInput = document.querySelector('.customer-calendar-dropdown');
+const managerDateInput = document.querySelector('.manager-calendar-dropdown');
+const customerAvailableRooms = document.querySelector('.customer-available-rooms');
+const managerAvailableRooms = document.querySelector('.manager-available-rooms');
 const customerBookings = document.querySelector('.customer-bookings');
-const roomTypeInput = document.getElementById('roomTypes-customer');
+const customerRoomTypeInput = document.getElementById('roomTypes-customer');
+const managerRoomTypeInput = document.getElementById('roomTypes-manager');
 
 loginButton.addEventListener('click', userLogin);
 clearButton.addEventListener('click', clearInputs);
-dateInput.addEventListener('input', updateAvailableRooms);
-roomTypeInput.addEventListener('change', filterRoomsByType);
+customerDateInput.addEventListener('input', updateCustomerAvailableRooms);
+managerDateInput.addEventListener('input', updateManagerAvailableRooms);
+customerRoomTypeInput.addEventListener('change', filterCustomerRoomsByType);
+managerRoomTypeInput.addEventListener('change', filterManagerRoomsByType);
 
 function userLogin() {
   let user;
@@ -60,7 +67,7 @@ function userLogin() {
     displayCustomerDashboard();
   } else if (password === 'overlook2020' && splitUsername[0] === 'manager') {
     user = new Manager(1, 'Cooper Pooper', userData, roomData, bookingData);
-    createManager();
+    createManager(user);
     displayManagerDashboard();
   } else {
     const user = undefined;
@@ -74,29 +81,37 @@ function createCustomer(userInfo) {
   customer = new Customer(userInfo.id, userInfo.name, roomData, bookingData);
 };
 
-function createManager() {
-  manager = new Manager(1, 'Cooper Pooper', userData, roomData, bookingData);
+function createManager(user) {
+  manager = user;
 }
 
 function displayCustomerDashboard() {
   loginScreen.classList.add('hidden');
   customerDashboard.classList.remove('hidden');
-  bookingArea.classList.remove('hidden');
+  customerBookingArea.classList.remove('hidden');
   createCustomerDashboard();
 
 }
 
-// function displayManagerDashboard() {
-//   loginScreen.classList.add('hidden');
-//   managerDashboard.classList.remove('hidden');
-//   bookingsArea.classList.remove('hidden');
-// }
+function displayManagerDashboard() {
+  loginScreen.classList.add('hidden');
+  managerDashboard.classList.remove('hidden');
+  managerBookingArea.classList.remove('hidden');
+  createManagerDashboard();
+}
 
-function updateAvailableRooms() {
-  availableRooms.innerText = '';
-  let date = dateInput.value.replace(/-/g, "/");
+function updateCustomerAvailableRooms() {
+  customerAvailableRooms.innerText = '';
+  let date = customerDateInput.value.replace(/-/g, "/");
   const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
-  displayAvailableRooms(date);
+  displayAvailableRooms(date, customer);
+}
+
+function updateManagerAvailableRooms() {
+  managerAvailableRooms.innerText = '';
+  let date = managerDateInput.value.replace(/-/g, "/");
+  const allAvailableRooms = manager.searchAvailableRoomsByDate(date);
+  displayAvailableRooms(date, manager);
 }
 
 function clearInputs(input) {
@@ -106,23 +121,43 @@ function clearInputs(input) {
 
 function createCustomerDashboard() {
   customerName.innerText = customer.name;
-  displayAvailableRooms(today);
+  displayAvailableRooms(today, customer);
   getCustomerBookings();
 }
 
-function displayAvailableRooms(date) {
-  const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
-  allAvailableRooms.forEach((room) => {
-    let roomInfo = `
-      <p>Room Number: ${room.number}</p>
-      <p>Type: ${room.roomType}</p>
-      <p>Bidet: ${room.bidet}</p>
-      <p>Bed Size: ${room.bedSize}</p>
-      <p>Beds: ${room.numBeds}</p>
-      <p>Cost Per Night: $${room.costPerNight}</p>
-    `
-    availableRooms.insertAdjacentHTML('beforeend', roomInfo);
-  })
+function createManagerDashboard() {
+  managerName.innerText = manager.name;
+  displayAvailableRooms(today, manager);
+}
+
+function displayAvailableRooms(date, user) {
+  if(user === customer) {
+    const allAvailableRooms = user.searchAvailableRoomsByDate(date);
+    allAvailableRooms.forEach((room) => {
+      let roomInfo = `
+        <p>Room Number: ${room.number}</p>
+        <p>Type: ${room.roomType}</p>
+        <p>Bidet: ${room.bidet}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Beds: ${room.numBeds}</p>
+        <p>Cost Per Night: $${room.costPerNight}</p>
+      `
+      customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
+    })
+  } else if (user === manager) {
+    const allAvailableRooms = user.searchAvailableRoomsByDate(date);
+    allAvailableRooms.forEach((room) => {
+      let roomInfo = `
+        <p>Room Number: ${room.number}</p>
+        <p>Type: ${room.roomType}</p>
+        <p>Bidet: ${room.bidet}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Beds: ${room.numBeds}</p>
+        <p>Cost Per Night: $${room.costPerNight}</p>
+      `
+      managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
+    })
+  }
 }
 
 function getCustomerBookings() {
@@ -148,10 +183,10 @@ function displayCustomerBookings(bookings) {
   })
 }
 
-function filterRoomsByType() {
-  let date = dateInput.value.replace(/-/g, "/");
+function filterCustomerRoomsByType() {
+  let date = customerDateInput.value.replace(/-/g, "/");
   const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
-  let roomTypeSelection = roomTypeInput.options[roomTypeInput.selectedIndex].value;
+  let roomTypeSelection = customerRoomTypeInput.options[customerRoomTypeInput.selectedIndex].value;
   const allFilteredRooms = allAvailableRooms.reduce((allFiltered, room) => {
     if (room.roomType === roomTypeSelection) {
       allFiltered.push(room);
@@ -160,11 +195,26 @@ function filterRoomsByType() {
     }
   return allFiltered;
   }, [])
-  displayFilteredRooms(allFilteredRooms);
+  displayCustomerFilteredRooms(allFilteredRooms);
 }
 
-function displayFilteredRooms(allFilteredRooms) {
-  availableRooms.innerHTML = '';
+function filterManagerRoomsByType() {
+  let date = managerDateInput.value.replace(/-/g, "/");
+  const allAvailableRooms = manager.searchAvailableRoomsByDate(date);
+  let roomTypeSelection = managerRoomTypeInput.options[managerRoomTypeInput.selectedIndex].value;
+  const allFilteredRooms = allAvailableRooms.reduce((allFiltered, room) => {
+    if (room.roomType === roomTypeSelection) {
+      allFiltered.push(room);
+    } else if (roomTypeSelection === 'all rooms') {
+      allFiltered.push(room);
+    }
+  return allFiltered;
+  }, [])
+  displayManagerFilteredRooms(allFilteredRooms);
+}
+
+function displayCustomerFilteredRooms(allFilteredRooms) {
+  customerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
     <p>Room Number: ${room.number}</p>
@@ -174,6 +224,21 @@ function displayFilteredRooms(allFilteredRooms) {
     <p>Beds: ${room.numBeds}</p>
     <p>Cost Per Night: $${room.costPerNight}</p>
     `
-    availableRooms.insertAdjacentHTML('beforeend', roomInfo);
+    customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
+  })
+}
+
+function displayManagerFilteredRooms(allFilteredRooms) {
+  managerAvailableRooms.innerHTML = '';
+  allFilteredRooms.forEach((room) => {
+    let roomInfo = `
+    <p>Room Number: ${room.number}</p>
+    <p>Type: ${room.roomType}</p>
+    <p>Bidet: ${room.bidet}</p>
+    <p>Bed Size: ${room.bedSize}</p>
+    <p>Beds: ${room.numBeds}</p>
+    <p>Cost Per Night: $${room.costPerNight}</p>
+    `
+    managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
   })
 }
