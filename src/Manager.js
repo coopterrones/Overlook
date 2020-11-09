@@ -3,8 +3,6 @@ import User from './User';
 class Manager extends User{
   constructor(id, name, userData, roomData, bookingData) {
     super(id, name, userData, roomData, bookingData);
-    this.totalRevenue = 0;
-    this.percentageOccupied = 0;
   }
 
   getTotalRevenueForDate(date) {
@@ -29,7 +27,8 @@ class Manager extends User{
       })
       return sum;
     }, 0)
-    const percentOccupied = this.percentageOccupied = (occupied / this.rooms.length) * 100;
+   let average = (occupied / this.rooms.length) * 100;
+   return average.toFixed();
   }
 
   getCustomerById(id) {

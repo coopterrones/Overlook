@@ -16,7 +16,6 @@ html {
 }
 
 body {
-  // background-image: url("../images/city-skyline.jpg");
   background-color: #E0E5EC;
   background-size: cover;
   background-repeat: no-repeat;
@@ -24,36 +23,7 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  // background-position: center center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // backface-visibility: hidden;
-  // animation: slideBg 25s linear infinite 2s;
-  // animation-timing-function: ease-in-out;
-  // background-image: url("../images/city-skyline.jpg");
 }
-
-// @keyframes slideBg {
-//   25%{
-//     background-image: url("../images/bathroom.jpg");
-//   }
-//
-//   50%{
-//     background-image: url("../images/hotel-pool.jpg");
-//   }
-//
-//   75%{
-//     background-image: url("../images/overhead-city.jpg");
-//   }
-//
-//   100%{
-//     background-image: url("../images/hotel-room.jpg");
-//   }
-//
-//   // 100%{
-//   //   background-image: url("../images/hotel-city.jpg");
-//   // }
-// }
 
 .header-bar {
   background-color: $dark-grey;
@@ -93,18 +63,6 @@ body {
   font-family: $cabin-font;
 }
 
-// .login-layout{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   height: 50vh;
-//   width: 75vh;
-//   background-color: $dark-grey;
-//   border-radius: 5px;
-//   font-family: $cabin-font;
-// }
-
 .login-layout{
   display: flex;
   flex-direction: column;
@@ -116,21 +74,6 @@ body {
   border-radius: 5px;
   font-family: $cabin-font;
 }
-
-// .username-input {
-//   margin: 1em;
-//   border-style: solid;
-//   height: 5%;
-//   width: 85%;
-//   padding: 2%;
-//   color: $light-white;
-//   background: none;
-//   border-color: $light-white;
-//   border-left-style: none;
-//   border-right-style: none;
-//   border-top-style: none;
-//   border-width: thin;
-// }
 
 .username-input {
   margin: 1em;
@@ -299,28 +242,96 @@ body {
   text-align: center;
 }
 
-.room-inputs-container {
-  margin-left: 1em;
+.manager-percentage-occupied {
+  margin-bottom: 0;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.manager-percentage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  padding: 1em;
+  background-color: #E0E5EC;
+  border-radius: 5px;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.manager-percentage-label {
+  margin: 0;
+  margin-top: 1em;
+  text-align: center;
 }
 
 .manager-calendar-dropdown {
-  background: none;
-  border-style: solid;
+  margin: 1em;
+  border-style: none;
+  border-radius:4px;
+  height: 25%;
+  width: 50%;
+  padding: 2%;
+  color: $dark-grey;
+  background-color:#E0E5EC;
+  box-shadow: 9px 9px 16px
+  rgba(163,177,198,0.6), -9px -9px 16px
+  rgba(255,255,255, 0.5);
+}
+
+.manager-calendar-dropdown:focus{
+  cursor: pointer;
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.customer-calendar-dropdown {
+  margin: 1em;
+  border-style: none;
+  border-radius:4px;
+  height: 25%;
+  width: 50%;
+  padding: 2%;
+  color: $dark-grey;
+  background-color:#E0E5EC;
+  box-shadow: 9px 9px 16px
+  rgba(163,177,198,0.6), -9px -9px 16px
+  rgba(255,255,255, 0.5);
+}
+
+.customer-calendar-dropdown:focus{
+  cursor: pointer;
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.manager-room-type-dropdown {
+  margin: 1em;
+  border-style: none;
+  border-radius: 4px;
+  height: 65%;
+  width: 85%;
+  padding: 2%;
+  color: #212529;
+  font-family: Cabin, sans-serif;
   border-radius: 5px;
-  padding: 1em;
-  color: white;
-  border-color: white;
-  height: 1%;
+  background-color: #E0E5EC;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
 }
 
-.select-room-type {
-  background: none;
-  color: white;
-  height: 1%;
-}
-
-::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+.customer-room-type-dropdown {
+  margin: 1em;
+  border-style: none;
+  border-radius: 4px;
+  height: 65%;
+  width: 85%;
+  padding: 2%;
+  color: #212529;
+  font-family: Cabin, sans-serif;
+  border-radius: 5px;
+  background-color: #E0E5EC;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
 }
 
 .user-info {
@@ -329,10 +340,6 @@ body {
   width: 50vw;
   height: 85vh;
   border-radius: 7px;
-  // background-color:#E0E5EC;
-  // box-shadow: 9px 9px 16px
-  // rgba(163,177,198,0.6), -9px -9px 16px
-  // rgba(255,255,255, 0.5);
   margin: 1em;
 }
 
@@ -423,6 +430,8 @@ body {
 .room-inputs-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 85%;
 }
 
 .room-cards {
@@ -432,8 +441,6 @@ body {
 
 .customer-available-rooms {
   background-color:#E0E5EC;
-  height: 50vh;
-  width: 85%;
   overflow: scroll;
   background-color: #E0E5EC;
   height: 90%;
@@ -443,12 +450,11 @@ body {
 
 .manager-available-rooms {
   background-color:#E0E5EC;
-  height: 50vh;
-  width: 85%;
   overflow: scroll;
   background-color: #E0E5EC;
   height: 90%;
-  width: 100%;
+  width: 85%;
+  padding: 1em;
   overflow: scroll;
 }
 
@@ -500,6 +506,7 @@ body {
 }
 
 .manager-bookings-area {
+  margin: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -529,15 +536,11 @@ body {
   width: 85%;
 }
 
-.manager-bookings-heading {
-  text-align: center;
-}
-
 .manager-search-input {
   margin: 1em;
   border-style: none;
   border-radius:4px;
-  height: 25%;
+  height: 30%;
   width: 75%;
   padding: 2%;
   color: $dark-grey;
