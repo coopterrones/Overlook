@@ -24,8 +24,7 @@
         <div class="room-inputs-container">
           <input class="customer-calendar-dropdown" type="date" name="selectADate">
           <form class="select-room-type" action="index.html">
-            <label for="roomTypes">Select a Room Type:</label>
-            <select name="roomTypes" id="roomTypes-customer">
+            <select class="customer-room-type-dropdown" name="roomTypes" id="roomTypes-customer">
               <option value="all rooms">All Rooms</option>
               <option value="single room">Single Room</option>
               <option value="junior suite">Junior Suite</option>
@@ -60,19 +59,27 @@
     <section class= "manager-view">
       <section class="user-info">
       <section class="manager-metrics-wrap">
+
         <section class="manager-metrics">
           <div class="manager-revenue">
             <sup class="manager-revenue-symbol"></sup><p class="manager-revenue-dollars"></p><p class="manager-revenue-decimal"></p><sup class="manager-revenue-cents"></sup>
           </div>
-          <p class="manager-revenue-label">Total Revenue</p>
-        </section>          
+          <p class="manager-percentage-label">Total Revenue</p>
+        </section>
+
+        <section class="manager-percentage-occupied">
+          <div class="manager-percentage">
+            <p class="manager-percentage-value"></p><sup class="manager-percentage-symbol"></sup>
+          </div>
+          <p class="manager-percentage-label">Percentage Occupied</p>
+        </section>
+
       </section>
 
         <div class="room-inputs-container">
           <input class="manager-calendar-dropdown" type="date" name="selectADate">
           <form class="select-room-type" action="index.html">
-            <label for="roomTypes">Select a Room Type: </label>
-            <select name="roomTypes" id="roomTypes-manager">
+            <select class="manager-room-type-dropdown"name="roomTypes" id="roomTypes-manager">
               <option value="all rooms">All Rooms</option>
               <option value="single room">Single Room</option>
               <option value="junior suite">Junior Suite</option>

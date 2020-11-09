@@ -66,7 +66,8 @@ const managerRevenueSymbol = document.querySelector('.manager-revenue-symbol');
 const managerRevenueDollars = document.querySelector('.manager-revenue-dollars');
 const managerRevenueDecimal = document.querySelector('.manager-revenue-decimal');
 const managerRevenueCents = document.querySelector('.manager-revenue-cents');
-
+const managerPercentageOccupiedValue = document.querySelector('.manager-percentage-value');
+const managerPercentageOccupiedSymbol = document.querySelector('.manager-percentage-symbol');
 
 loginButton.addEventListener('click', userLogin);
 clearButton.addEventListener('click', clearInputs);
@@ -119,6 +120,7 @@ function displayManagerDashboard() {
   managerBookingArea.classList.remove('hidden');
   createManagerDashboard();
   getManagerRevenue();
+  getManagerPercentageOccupied();
 }
 
 function updateCustomerAvailableRooms() {
@@ -368,4 +370,16 @@ function displayManagerRevenue(revenue) {
   managerRevenueDollars.innerText = splitTotal[0];
   managerRevenueDecimal.innerText = '.';
   managerRevenueCents.innerText = splitTotal[1];
+}
+
+function getManagerPercentageOccupied() {
+  const percentage = manager.getPercentageOccupied(today);
+  displayManagerPercentageOccupied(percentage);
+}
+
+function displayManagerPercentageOccupied(percentage) {
+  managerPercentageOccupiedValue.innerText = '';
+  managerPercentageOccupiedSymbol.innerText = '';
+  managerPercentageOccupiedValue.innerText = percentage;
+  managerPercentageOccupiedSymbol.innerText = '%';
 }
