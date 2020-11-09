@@ -197,16 +197,30 @@ body {
   color: $dark-grey;
   font-family: $cabin-font;
   border-radius: 5px;
+  background-color:#E0E5EC;
+  box-shadow: 9px 9px 16px
+  rgba(163,177,198,0.6), -9px -9px 16px
+  rgba(255,255,255, 0.5);
+}
+
+.clear-button:hover {
+  cursor: pointer;
   background: linear-gradient(145deg, #f0f5fd, #caced4);
   box-shadow:  20px 20px 60px #bec3c9,
                -20px -20px 60px #ffffff;
 }
 
-.clear-button:hover {
+.clear-button:active {
   cursor: pointer;
   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
   inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 }
+
+// .clear-button:hover {
+//   cursor: pointer;
+//   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+//   inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+// }
 
 .login-button {
   border-radius:4px;
@@ -218,12 +232,20 @@ body {
   color: $dark-grey;
   font-family: $cabin-font;
   border-radius: 5px;
+  background-color:#E0E5EC;
+  box-shadow: 9px 9px 16px
+  rgba(163,177,198,0.6), -9px -9px 16px
+  rgba(255,255,255, 0.5);
+}
+
+.login-button:hover {
+  cursor: pointer;
   background: linear-gradient(145deg, #f0f5fd, #caced4);
   box-shadow:  20px 20px 60px #bec3c9,
                -20px -20px 60px #ffffff;
 }
 
-.login-button:hover {
+.login-button:active {
   cursor: pointer;
   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
   inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
@@ -509,16 +531,25 @@ body {
   color: $dark-grey;
   font-family: $cabin-font;
   border-radius: 5px;
+  background-color:#E0E5EC;
+  box-shadow: 9px 9px 16px
+  rgba(163,177,198,0.6), -9px -9px 16px
+  rgba(255,255,255, 0.5);
+}
+
+.manager-search-button:hover {
+  cursor: pointer;
   background: linear-gradient(145deg, #f0f5fd, #caced4);
   box-shadow:  20px 20px 60px #bec3c9,
                -20px -20px 60px #ffffff;
 }
 
-.manager-search-button:hover {
+.manager-search-button:active {
   cursor: pointer;
   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
   inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 }
+
 .manager-bookings {
   padding: 1em;
   background-color: #E0E5EC;
