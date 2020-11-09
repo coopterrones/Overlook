@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  // background-image: url("../images/city-skyline.jpg");
+    background-image: url("../images/city-skyline.jpg");
   background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
@@ -70,7 +70,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .welcome-greeting {
@@ -83,15 +83,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50%;
-  width: 45%;
+  height: 50vh;
+  width: 75vh;
   background-color: $dark-grey;
   border-radius: 5px;
+  font-family: $cabin-font;
 }
 
 .username-input {
   margin: 1em;
-  border-radius: 5px;
   border-style: solid;
   height: 5%;
   width: 85%;
@@ -99,11 +99,14 @@ body {
   color: $light-white;
   background: none;
   border-color: $light-white;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  border-width: thin;
 }
 
 .password-input {
   margin: 1em;
-  border-radius: 5px;
   border-style: solid;
   height: 5%;
   width: 85%;
@@ -111,6 +114,10 @@ body {
   color: $light-white;
   background: none;
   border-color: $light-white;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  border-width: thin;
 }
 
 ::placeholder {
@@ -125,6 +132,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+  margin-top: 3vh
 }
 
 .clear-button {
@@ -134,11 +142,13 @@ body {
   background: none;
   border-style: solid;
   border-color: $light-white;
-  border-radius: 5px;
   padding: .5em;
   color: $light-white;
   font-family: $cabin-font;
-  border-width: medium;
+  border-left-style: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-width: thin;
 }
 
 .login-button {
@@ -148,16 +158,22 @@ body {
   background: none;
   border-style: solid;
   border-color: $light-white;
-  border-radius: 5px;
   padding: .5em;
   color: $light-white;
   font-family: $cabin-font;
   border-width: medium;
+  border-left-style: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-width: thin;
 }
+
+
 
 .customer-view {
   display: flex;
   flex-direction: row;
+  font-family: $cabin-font;
 }
 
 .room-inputs-container {
@@ -183,6 +199,11 @@ body {
 .room-inputs-container {
   display: flex;
   flex-direction: row;
+}
+
+.room-cards {
+  height: 85%;
+  width: 25%;
 }
 
 .available-rooms {

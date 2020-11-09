@@ -4,7 +4,7 @@
 import './css/base.scss';
 // // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
-import './images/user.png';
+// import './images/user.png';
 import Customer from './Customer';
 import Manager from './Manager';
 import {fetchAPI} from './API';
@@ -59,7 +59,7 @@ function userLogin() {
     createCustomer(user);
     displayCustomerDashboard();
   } else if (password === 'overlook2020' && splitUsername[0] === 'manager') {
-    user = new Manager(1, 'Cooper Pooper', userData, roomData, bookingData)
+    user = new Manager(1, 'Cooper Pooper', userData, roomData, bookingData);
     createManager();
     displayManagerDashboard();
   } else {
@@ -114,12 +114,12 @@ function displayAvailableRooms(date) {
   const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
   allAvailableRooms.forEach((room) => {
     let roomInfo = `
-    <p>Room Number: ${room.number}</p>
-    <p>Type: ${room.roomType}</p>
-    <p>Bidet: ${room.bidet}</p>
-    <p>Bed Size: ${room.bedSize}</p>
-    <p>Beds: ${room.numBeds}</p>
-    <p>Cost Per Night: $${room.costPerNight}</p>
+      <p>Room Number: ${room.number}</p>
+      <p>Type: ${room.roomType}</p>
+      <p>Bidet: ${room.bidet}</p>
+      <p>Bed Size: ${room.bedSize}</p>
+      <p>Beds: ${room.numBeds}</p>
+      <p>Cost Per Night: $${room.costPerNight}</p>
     `
     availableRooms.insertAdjacentHTML('beforeend', roomInfo);
   })
@@ -140,9 +140,9 @@ function getCustomerBookings() {
 function displayCustomerBookings(bookings) {
   bookings.forEach((booking) => {
     let bookingInfo = `
-    <p>Booking Confirmation: ${booking.id}</p>
-    <p>Date: ${booking.date}</p>
-    <p>Room Number: ${booking.roomNumber}</p>
+      <p>Booking Confirmation: ${booking.id}</p>
+      <p>Date: ${booking.date}</p>
+      <p>Room Number: ${booking.roomNumber}</p>
     `
   customerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
