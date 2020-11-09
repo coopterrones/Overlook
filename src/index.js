@@ -5,6 +5,8 @@ import './css/base.scss';
 // // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
 // import './images/user.png';
+import'./images/overlook.png';
+import'./images/hotel.png';
 import Customer from './Customer';
 import Manager from './Manager';
 import {fetchAPI} from './API';
@@ -35,10 +37,10 @@ const clearButton = document.querySelector('.clear-button');
 const usernameInput = document.querySelector('.username-input');
 const passwordInput = document.querySelector('.password-input');
 const loginScreen = document.querySelector('.login-screen');
-const customerDashboard = document.querySelector('.customer-view');
+const customerDashboard = document.querySelector('.customer-layout');
 const customerBookingArea = document.querySelector('.customer-bookings-area');
 const managerBookingArea = document.querySelector('.manager-bookings-area');
-const managerDashboard = document.querySelector('.manager-view');
+const managerDashboard = document.querySelector('.manager-layout');
 const customerName = document.querySelector('.customer-name');
 const managerName = document.querySelector('.manager-name');
 const customerDateInput = document.querySelector('.customer-calendar-dropdown');
@@ -140,12 +142,16 @@ function displayAvailableRooms(date, user) {
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
       <div class="room-card">
-        <p>Room Number: ${room.number}</p>
-        <p>Type: ${room.roomType}</p>
-        <p>Bidet: ${room.bidet}</p>
-        <p>Bed Size: ${room.bedSize}</p>
-        <p>Beds: ${room.numBeds}</p>
-        <p>Cost Per Night: $${room.costPerNight}</p>
+        <div class="room-card-break-one">
+          <p>Room Number: ${room.number}</p>
+          <p>Type: ${room.roomType}</p>
+          <p>Bidet: ${room.bidet}</p>
+        </div>
+        <div class="room-card-break-two">
+          <p>Bed Size: ${room.bedSize}</p>
+          <p>Beds: ${room.numBeds}</p>
+          <p>Cost Per Night: $${room.costPerNight}</p>
+        </div>
       </div>
       `
       customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -155,12 +161,16 @@ function displayAvailableRooms(date, user) {
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
       <div class="room-card">
-        <p>Room Number: ${room.number}</p>
-        <p>Type: ${room.roomType}</p>
-        <p>Bidet: ${room.bidet}</p>
-        <p>Bed Size: ${room.bedSize}</p>
-        <p>Beds: ${room.numBeds}</p>
-        <p>Cost Per Night: $${room.costPerNight}</p>
+        <div class="room-card-break-one">
+          <p>Room Number: ${room.number}</p>
+          <p>Type: ${room.roomType}</p>
+          <p>Bidet: ${room.bidet}</p>
+        </div>
+        <div class="room-card-break-two">
+          <p>Bed Size: ${room.bedSize}</p>
+          <p>Beds: ${room.numBeds}</p>
+          <p>Cost Per Night: $${room.costPerNight}</p>
+        </div>
       </div>
       `
       managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -187,7 +197,7 @@ function displayCustomerBookings(bookings) {
       <p>Booking Confirmation: ${booking.id}</p>
       <p>Date: ${booking.date}</p>
       <p>Room Number: ${booking.roomNumber}</p>
-    </div>  
+    </div>
     `
   customerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
