@@ -46,6 +46,7 @@ const managerDateInput = document.querySelector('.manager-calendar-dropdown');
 const customerAvailableRooms = document.querySelector('.customer-available-rooms');
 const managerAvailableRooms = document.querySelector('.manager-available-rooms');
 const customerBookings = document.querySelector('.customer-bookings');
+const managerBookings = document.querySelector('.manager-bookings');
 const customerRoomTypeInput = document.getElementById('roomTypes-customer');
 const managerRoomTypeInput = document.getElementById('roomTypes-manager');
 const customerSearchInput = document.querySelector('.customer-search-input');
@@ -250,4 +251,29 @@ function searchCustomers() {
   const customerInput = customerSearchInput.value;
   const userResult = manager.getCustomerById(customerInput);
   customer = new Customer(userResult.id, userResult.name, roomData, bookingData);
+  getCustomerBookingsForManager(customer)
+}
+
+function getCustomerBookingsForManager(customer) {
+  const allBookings = customer.bookings.reduce((allBookings, booking) => {
+    customer.rooms.forEach((room) => {
+      if (booking.userID === customer.id && booking.roomNumber === room.number) {
+        allBookings.push(booking);
+      }
+    })
+  return allBookings;
+  }, [])
+  displayManagerViewBookings(allBookings);
+}
+
+function displayManagerViewBookings(bookings) {
+  managerBookings.innerHTML = '';
+  bookings.forEach((booking) => {
+    let bookingInfo = `
+      <p>Booking Confirmation: ${booking.id}</p>
+      <p>Date: ${booking.date}</p>
+      <p>Room Number: ${booking.roomNumber}</p>
+    `
+  managerBookings.insertAdjacentHTML('beforeend', bookingInfo);
+  })
 }
