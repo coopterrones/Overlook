@@ -62,6 +62,10 @@ const managerDollarsSpent = document.querySelector('.manager-dollars-spent');
 const managerSpentDecimal = document.querySelector('.manager-amount-decimal');
 const managerCentsSpent = document.querySelector('.manager-cents-spent');
 const managerAmountSpentLabel = document.querySelector('.manager-amount-spent-label');
+const managerRevenueSymbol = document.querySelector('.manager-revenue-symbol');
+const managerRevenueDollars = document.querySelector('.manager-revenue-dollars');
+const managerRevenueDecimal = document.querySelector('.manager-revenue-decimal');
+const managerRevenueCents = document.querySelector('.manager-revenue-cents');
 
 
 loginButton.addEventListener('click', userLogin);
@@ -114,6 +118,7 @@ function displayManagerDashboard() {
   managerDashboard.classList.remove('hidden');
   managerBookingArea.classList.remove('hidden');
   createManagerDashboard();
+  getManagerRevenue();
 }
 
 function updateCustomerAvailableRooms() {
@@ -345,4 +350,22 @@ function displayCustomerAmountSpent(totalSpent, user) {
   customerSpentDecimal.innerText = '.';
   customerCentsSpent.innerText = splitTotal[1];
   }
+}
+
+function getManagerRevenue() {
+  const revenue = manager.getTotalRevenueForDate(today);
+  displayManagerRevenue(revenue);
+}
+
+function displayManagerRevenue(revenue) {
+  managerRevenueSymbol.innrText = '';
+  managerRevenueDollars.innerText = '';
+  managerRevenueDecimal.innerText = '';
+  managerRevenueCents.innerText = '';
+  const stringRevenue = revenue.toString();
+  const splitTotal = stringRevenue.split('.');
+  managerRevenueSymbol.innerText = '$';
+  managerRevenueDollars.innerText = splitTotal[0];
+  managerRevenueDecimal.innerText = '.';
+  managerRevenueCents.innerText = splitTotal[1];
 }

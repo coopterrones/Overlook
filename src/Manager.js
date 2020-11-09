@@ -17,7 +17,7 @@ class Manager extends User{
       return total;
     }, 0);
     const roundedAmount = totalRevenueForToday.toFixed(2)
-    this.totalRevenue = parseFloat(roundedAmount);
+    return parseFloat(roundedAmount);
   }
 
   getPercentageOccupied(date) {
