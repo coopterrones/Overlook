@@ -29,6 +29,18 @@ class User {
     return matchedRooms.length > 0 ? matchedRooms : noRoomsAvailable;
   };
 
+  getCustomerTotalSpent(customer) {
+    const amount = this.bookings.reduce((total, booking) => {
+      this.rooms.forEach((room) => {
+        if (booking.userID === customer.id && room.number === booking.roomNumber) {
+          total += room.costPerNight;
+        }
+      });
+    return total;
+  }, 0);
+    const roundedAmount = amount.toFixed(2);
+    return parseFloat(roundedAmount);
+  };
 }
 
 export default User;

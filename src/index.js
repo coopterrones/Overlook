@@ -52,7 +52,17 @@ const managerBookings = document.querySelector('.manager-bookings');
 const customerRoomTypeInput = document.getElementById('roomTypes-customer');
 const managerRoomTypeInput = document.getElementById('roomTypes-manager');
 const customerSearchInput = document.querySelector('.customer-search-input');
+const customerSpentSymbol = document.querySelector('.customer-spent-symbol')
 const customerSearchButton = document.querySelector('.customer-search-button');
+const customerDollarsSpent = document.querySelector('.customer-dollars-spent');
+const customerSpentDecimal = document.querySelector('.customer-amount-decimal');
+const customerCentsSpent = document.querySelector('.customer-cents-spent');
+const managerSpentSymbol = document.querySelector('.manager-spent-symbol');
+const managerDollarsSpent = document.querySelector('.manager-dollars-spent');
+const managerSpentDecimal = document.querySelector('.manager-amount-decimal');
+const managerCentsSpent = document.querySelector('.manager-cents-spent');
+const managerAmountSpentLabel = document.querySelector('.manager-amount-spent-label');
+
 
 loginButton.addEventListener('click', userLogin);
 clearButton.addEventListener('click', clearInputs);
@@ -72,7 +82,7 @@ function userLogin() {
     createCustomer(user);
     displayCustomerDashboard();
   } else if (password === 'overlook2020' && splitUsername[0] === 'manager') {
-    user = new Manager(1, 'Cooper Pooper', userData, roomData, bookingData);
+    user = new Manager(1, 'Manager', userData, roomData, bookingData);
     createManager(user);
     displayManagerDashboard();
   } else {
@@ -129,10 +139,11 @@ function createCustomerDashboard() {
   customerName.innerText = customer.name;
   displayAvailableRooms(today, customer);
   getCustomerBookings();
+  getTotalSpent(customer);
 }
 
 function createManagerDashboard() {
-  managerName.innerText = manager.name;
+  managerName.innerText = '';
   displayAvailableRooms(today, manager);
 }
 
@@ -271,7 +282,9 @@ function searchCustomers() {
   const customerInput = customerSearchInput.value;
   const userResult = manager.getCustomerById(customerInput);
   customer = new Customer(userResult.id, userResult.name, roomData, bookingData);
+  managerName.innerText = customer.name;
   getCustomerBookingsForManager(customer)
+  getTotalSpent(manager)
 }
 
 function getCustomerBookingsForManager(customer) {
@@ -298,4 +311,38 @@ function displayManagerViewBookings(bookings) {
     `
   managerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
+}
+
+
+function getTotalSpent(user) {
+  const totalSpent = user.getCustomerTotalSpent(customer)
+  displayCustomerAmountSpent(totalSpent, user);
+}
+
+function displayCustomerAmountSpent(totalSpent, user) {
+  if (user === manager) {
+    managerAmountSpentLabel.innerText = 'Amount Spent';
+    managerSpentSymbol.innerText = ''
+    managerDollarsSpent.innerText = '';
+    managerSpentSymbol.innerText = '';
+    managerCentsSpent.innerText = '';
+    let string = totalSpent.toString();
+    const splitTotal = string.split('.');
+    managerSpentSymbol.innerText = '$';
+    managerDollarsSpent.innerText = splitTotal[0];
+    managerSpentDecimal.innerText = '.';
+    managerCentsSpent.innerText = splitTotal[1];
+  }
+  else if (user === customer) {
+  customerSpentSymbol.innerText = '';
+  customerDollarsSpent.innerText = '';
+  customerSpentDecimal.innerText = '';
+  customerCentsSpent.innerText = '';
+  let string = totalSpent.toString();
+  const splitTotal = string.split('.');
+  customerSpentSymbol.innerText = '$';
+  customerDollarsSpent.innerText = splitTotal[0];
+  customerSpentDecimal.innerText = '.';
+  customerCentsSpent.innerText = splitTotal[1];
+  }
 }
