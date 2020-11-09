@@ -467,6 +467,58 @@ body {
   overflow: scroll;
 }
 
+.manager-search-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 85%;
+}
+
+.manager-bookings-heading {
+  text-align: center;
+}
+
+.manager-search-input {
+  margin: 1em;
+  border-style: none;
+  border-radius:4px;
+  height: 25%;
+  width: 75%;
+  padding: 2%;
+  color: $dark-grey;
+  background-color:#E0E5EC;
+  box-shadow: 9px 9px 16px
+  rgba(163,177,198,0.6), -9px -9px 16px
+  rgba(255,255,255, 0.5);
+}
+
+.manager-search-input:focus{
+  cursor: pointer;
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+.manager-search-button {
+  margin: 1em;
+  border-style: none;
+  border-radius:4px;
+  height: 55%;
+  width: 20%;
+  padding: 2%;
+  color: $dark-grey;
+  font-family: $cabin-font;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #f0f5fd, #caced4);
+  box-shadow:  20px 20px 60px #bec3c9,
+               -20px -20px 60px #ffffff;
+}
+
+.manager-search-button:hover {
+  cursor: pointer;
+  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
 .manager-bookings {
   padding: 1em;
   background-color: #E0E5EC;
