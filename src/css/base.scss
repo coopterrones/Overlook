@@ -267,6 +267,38 @@ body {
   height: 100%;
 }
 
+.manager-metrics-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 85%;
+}
+
+.manager-metrics {
+  margin-bottom: 0;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.manager-revenue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  padding: 1em;
+  background-color: #E0E5EC;
+  border-radius: 5px;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.manager-revenue-label {
+  margin: 0;
+  margin-top: 1em;
+  text-align: center;
+}
+
 .room-inputs-container {
   margin-left: 1em;
 }
