@@ -33,8 +33,10 @@ class Manager extends User{
   }
 
   getCustomerById(id) {
+    const splitUsername = id.split('customer');
+    const intID = parseInt(splitUsername[1])
     const currentUser = this.users.find((user) => {
-      return user.id === id;
+      return user.id === intID;
     })
     return currentUser;
   }
