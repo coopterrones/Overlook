@@ -12,20 +12,51 @@ html {
 }
 
 body {
-  // background-image: url("../images/city-skyline.jpg");
+    background-image: url("../images/city-skyline.jpg");
   background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  // height: 100vh;
+  width: 100%;
+  height: 100%;
+  // background-position: center center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // backface-visibility: hidden;
+  // animation: slideBg 25s linear infinite 2s;
+  // animation-timing-function: ease-in-out;
+  // background-image: url("../images/city-skyline.jpg");
+}
+
+@keyframes slideBg {
+  25%{
+    background-image: url("../images/bathroom.jpg");
+  }
+
+  50%{
+    background-image: url("../images/hotel-pool.jpg");
+  }
+
+  75%{
+    background-image: url("../images/overhead-city.jpg");
+  }
+
+  100%{
+    background-image: url("../images/hotel-room.jpg");
+  }
+
+  // 100%{
+  //   background-image: url("../images/hotel-city.jpg");
+  // }
 }
 
 .header-bar {
   background-color: $dark-grey;
   color: $light-white;
   margin: none;
-  height: 10%;
+  height: 5%;
   padding: 1%;
   font-family: $cabin-font;
 }
@@ -39,7 +70,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .welcome-greeting {
@@ -52,15 +83,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50%;
-  width: 45%;
+  height: 50vh;
+  width: 75vh;
   background-color: $dark-grey;
   border-radius: 5px;
+  font-family: $cabin-font;
 }
 
 .username-input {
   margin: 1em;
-  border-radius: 5px;
   border-style: solid;
   height: 5%;
   width: 85%;
@@ -68,11 +99,14 @@ body {
   color: $light-white;
   background: none;
   border-color: $light-white;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  border-width: thin;
 }
 
 .password-input {
   margin: 1em;
-  border-radius: 5px;
   border-style: solid;
   height: 5%;
   width: 85%;
@@ -80,6 +114,10 @@ body {
   color: $light-white;
   background: none;
   border-color: $light-white;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  border-width: thin;
 }
 
 ::placeholder {
@@ -94,6 +132,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+  margin-top: 3vh
 }
 
 .clear-button {
@@ -103,11 +142,13 @@ body {
   background: none;
   border-style: solid;
   border-color: $light-white;
-  border-radius: 5px;
   padding: .5em;
   color: $light-white;
   font-family: $cabin-font;
-  border-width: medium;
+  border-left-style: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-width: thin;
 }
 
 .login-button {
@@ -117,16 +158,26 @@ body {
   background: none;
   border-style: solid;
   border-color: $light-white;
-  border-radius: 5px;
   padding: .5em;
   color: $light-white;
   font-family: $cabin-font;
   border-width: medium;
+  border-left-style: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-width: thin;
 }
 
 .customer-view {
   display: flex;
   flex-direction: row;
+  font-family: $cabin-font;
+}
+
+.manager-view {
+  display: flex;
+  flex-direction: row;
+  font-family: $cabin-font;
 }
 
 .room-inputs-container {
@@ -154,7 +205,12 @@ body {
   flex-direction: row;
 }
 
-.available-rooms {
+.room-cards {
+  height: 85%;
+  width: 25%;
+}
+
+.customer-available-rooms {
   margin: 1em;
   background-color: $grey-white;
   height: 75%;
@@ -162,7 +218,22 @@ body {
   padding: 1em;
 }
 
-.bookings-area {
+.manager-available-rooms {
+  margin: 1em;
+  background-color: $grey-white;
+  height: 75%;
+  width: 85%;
+  padding: 1em;
+}
+
+.customer-bookings-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.manager-bookings-area {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -174,6 +245,11 @@ body {
 }
 
 .customer-bookings {
+  background-color: $grey-white;
+  width: 85%;
+}
+
+.manager-bookings {
   background-color: $grey-white;
   width: 85%;
 }
