@@ -139,12 +139,14 @@ function displayAvailableRooms(date, user) {
     const allAvailableRooms = user.searchAvailableRoomsByDate(date);
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
+      <div class="room-card">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
         <p>Bidet: ${room.bidet}</p>
         <p>Bed Size: ${room.bedSize}</p>
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
+      </div>
       `
       customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
     })
@@ -152,12 +154,14 @@ function displayAvailableRooms(date, user) {
     const allAvailableRooms = user.searchAvailableRoomsByDate(date);
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
+      <div class="room-card">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
         <p>Bidet: ${room.bidet}</p>
         <p>Bed Size: ${room.bedSize}</p>
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
+      </div>
       `
       managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
     })
@@ -179,9 +183,11 @@ function getCustomerBookings() {
 function displayCustomerBookings(bookings) {
   bookings.forEach((booking) => {
     let bookingInfo = `
+    <div class="booking-card">
       <p>Booking Confirmation: ${booking.id}</p>
       <p>Date: ${booking.date}</p>
       <p>Room Number: ${booking.roomNumber}</p>
+    </div>  
     `
   customerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
@@ -221,12 +227,14 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
   customerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
-    <p>Room Number: ${room.number}</p>
-    <p>Type: ${room.roomType}</p>
-    <p>Bidet: ${room.bidet}</p>
-    <p>Bed Size: ${room.bedSize}</p>
-    <p>Beds: ${room.numBeds}</p>
-    <p>Cost Per Night: $${room.costPerNight}</p>
+    <div class="room-card">
+      <p>Room Number: ${room.number}</p>
+      <p>Type: ${room.roomType}</p>
+      <p>Bidet: ${room.bidet}</p>
+      <p>Bed Size: ${room.bedSize}</p>
+      <p>Beds: ${room.numBeds}</p>
+      <p>Cost Per Night: $${room.costPerNight}</p>
+    </div>
     `
     customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
   })
@@ -236,12 +244,14 @@ function displayManagerFilteredRooms(allFilteredRooms) {
   managerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
-    <p>Room Number: ${room.number}</p>
-    <p>Type: ${room.roomType}</p>
-    <p>Bidet: ${room.bidet}</p>
-    <p>Bed Size: ${room.bedSize}</p>
-    <p>Beds: ${room.numBeds}</p>
-    <p>Cost Per Night: $${room.costPerNight}</p>
+    <div class="room-card">
+      <p>Room Number: ${room.number}</p>
+      <p>Type: ${room.roomType}</p>
+      <p>Bidet: ${room.bidet}</p>
+      <p>Bed Size: ${room.bedSize}</p>
+      <p>Beds: ${room.numBeds}</p>
+      <p>Cost Per Night: $${room.costPerNight}</p>
+    </div>
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
   })
@@ -270,9 +280,11 @@ function displayManagerViewBookings(bookings) {
   managerBookings.innerHTML = '';
   bookings.forEach((booking) => {
     let bookingInfo = `
+    <div class="booking-card">
       <p>Booking Confirmation: ${booking.id}</p>
       <p>Date: ${booking.date}</p>
       <p>Room Number: ${booking.roomNumber}</p>
+    </div>
     `
   managerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
