@@ -17,6 +17,7 @@ let bookingData;
 let customer;
 let manager;
 let date;
+let newBooking = {userID: 0, date: '', roomNumber: 0};
 
 Promise.all([fetchAPI.fetchUsers(), fetchAPI.fetchRooms(), fetchAPI.fetchBookings()]).then(values => {
   userData = values[0]['users'];
@@ -76,6 +77,7 @@ managerDateInput.addEventListener('input', updateManagerAvailableRooms);
 customerRoomTypeInput.addEventListener('change', filterCustomerRoomsByType);
 managerRoomTypeInput.addEventListener('change', filterManagerRoomsByType);
 customerSearchButton.addEventListener('click', searchCustomers);
+customerAvailableRooms.addEventListener('click', selectARoom);
 
 function userLogin() {
   let user;
@@ -157,10 +159,9 @@ function createManagerDashboard() {
 function displayAvailableRooms(date, user) {
   if(user === customer) {
     const allAvailableRooms = user.searchAvailableRoomsByDate(date);
-    console.log(allAvailableRooms);
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
-      <div class="room-card">
+      <div id="${room.number}" class="room-card">
         <div class="room-card-break-one">
           <p>Room Number: ${room.number}</p>
           <p>Type: ${room.roomType}</p>
@@ -171,6 +172,7 @@ function displayAvailableRooms(date, user) {
           <p>Beds: ${room.numBeds}</p>
           <p>Cost Per Night: $${room.costPerNight}</p>
         </div>
+        <button class="book-room-button" type="button" name="button">Book</button>
       </div>
       `
       customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -179,7 +181,7 @@ function displayAvailableRooms(date, user) {
     const allAvailableRooms = user.searchAvailableRoomsByDate(date);
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
-      <div class="room-card">
+      <div id="${room.number}" class="room-card">
         <div class="room-card-break-one">
           <p>Room Number: ${room.number}</p>
           <p>Type: ${room.roomType}</p>
@@ -190,6 +192,7 @@ function displayAvailableRooms(date, user) {
           <p>Beds: ${room.numBeds}</p>
           <p>Cost Per Night: $${room.costPerNight}</p>
         </div>
+        <button class="book-room-button" type="button" name="button">Book</button>
       </div>
       `
       managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -256,7 +259,7 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
   customerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
-    <div class="room-card">
+    <div id="${room.number}" class="room-card">
       <div class="room-card-break-one">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
@@ -267,6 +270,7 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
       </div>
+      <button class="book-room-button" type="button" name="button">Book</button>
     </div>
     `
     customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -277,7 +281,7 @@ function displayManagerFilteredRooms(allFilteredRooms) {
   managerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
-    <div class="room-card">
+    <div id="${room.number}" class="room-card">
       <div class="room-card-break-one">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
@@ -288,6 +292,7 @@ function displayManagerFilteredRooms(allFilteredRooms) {
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
       </div>
+      <button class="book-room-button" type="button" name="button">Book</button>
     </div>
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -396,4 +401,20 @@ function displayManagerPercentageOccupied(percentage) {
 function updateManagerInfo(date) {
   getManagerRevenue(date);
   getManagerPercentageOccupied(date);
+}
+
+function selectARoom(event) {
+  let roomNumber;
+    roomNumber = parseInt(event.target.parentNode.id);
+  let book = confirm("Would you like to book this room?");
+    if (book === true) {
+      newBooking.roomNumber = roomNumber;
+      bookRoom();
+    } else {
+      return undefined;
+    }
+}
+
+function bookRoom() {
+  console.log(newBooking);
 }
