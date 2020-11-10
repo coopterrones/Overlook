@@ -257,12 +257,16 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
     <div class="room-card">
-      <p>Room Number: ${room.number}</p>
-      <p>Type: ${room.roomType}</p>
-      <p>Bidet: ${room.bidet}</p>
-      <p>Bed Size: ${room.bedSize}</p>
-      <p>Beds: ${room.numBeds}</p>
-      <p>Cost Per Night: $${room.costPerNight}</p>
+      <div class="room-card-break-one">
+        <p>Room Number: ${room.number}</p>
+        <p>Type: ${room.roomType}</p>
+        <p>Bidet: ${room.bidet}</p>
+      </div>
+      <div class="room-card-break-two">
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Beds: ${room.numBeds}</p>
+        <p>Cost Per Night: $${room.costPerNight}</p>
+      </div>
     </div>
     `
     customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -274,12 +278,16 @@ function displayManagerFilteredRooms(allFilteredRooms) {
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
     <div class="room-card">
-      <p>Room Number: ${room.number}</p>
-      <p>Type: ${room.roomType}</p>
-      <p>Bidet: ${room.bidet}</p>
-      <p>Bed Size: ${room.bedSize}</p>
-      <p>Beds: ${room.numBeds}</p>
-      <p>Cost Per Night: $${room.costPerNight}</p>
+      <div class="room-card-break-one">
+        <p>Room Number: ${room.number}</p>
+        <p>Type: ${room.roomType}</p>
+        <p>Bidet: ${room.bidet}</p>
+      </div>
+      <div class="room-card-break-two">
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Beds: ${room.numBeds}</p>
+        <p>Cost Per Night: $${room.costPerNight}</p>
+      </div>
     </div>
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);

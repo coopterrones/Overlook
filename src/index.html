@@ -5,15 +5,19 @@
   </head>
   <body>
     <section class="login-screen">
+      <div class="overlook-logo">
+      </div>
       <div class="login-layout">
         <!-- <img class="overlook-logo"src="./images/overlook.png" alt="overlook-hotel-logo"> -->
-        <div class="overlook-logo">
-        </div>
-        <input class="username-input" type="text" placeholder="username">
-        <input class="password-input" type="text" placeholder="password">
-        <div class="login-buttons">
-          <button class="clear-button" type="button" name="button">Clear</button>
-          <button class="login-button" type="button" name="button">Login</button>
+        <div class="login-inputs">
+          <input class="username-input" id="usernameInput"type="text" name="usernameInput">
+          <label id="usernameInputLabel"for="usernameInput">username</label>
+          <input class="password-input" id="passwordInput" type="text" name="passwordInput">
+          <label id="passwordInputLabel" for="passwordInput">password</label>
+          <div class="login-buttons">
+            <button class="clear-button" type="button" name="button">Clear</button>
+            <button class="login-button" type="button" name="button">Login</button>
+          </div>
         </div>
       </div>
     </section>
