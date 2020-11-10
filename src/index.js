@@ -119,8 +119,8 @@ function displayManagerDashboard() {
   managerDashboard.classList.remove('hidden');
   managerBookingArea.classList.remove('hidden');
   createManagerDashboard();
-  getManagerRevenue();
-  getManagerPercentageOccupied();
+  getManagerRevenue(today);
+  getManagerPercentageOccupied(today);
 }
 
 function updateCustomerAvailableRooms() {
@@ -135,6 +135,7 @@ function updateManagerAvailableRooms() {
   let date = managerDateInput.value.replace(/-/g, "/");
   const allAvailableRooms = manager.searchAvailableRoomsByDate(date);
   displayAvailableRooms(date, manager);
+  updateManagerInfo(date, manager);
 }
 
 function clearInputs(input) {
@@ -150,13 +151,13 @@ function createCustomerDashboard() {
 }
 
 function createManagerDashboard() {
-  managerName.innerText = '';
   displayAvailableRooms(today, manager);
 }
 
 function displayAvailableRooms(date, user) {
   if(user === customer) {
     const allAvailableRooms = user.searchAvailableRoomsByDate(date);
+    console.log(allAvailableRooms);
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
       <div class="room-card">
@@ -354,8 +355,8 @@ function displayCustomerAmountSpent(totalSpent, user) {
   }
 }
 
-function getManagerRevenue() {
-  const revenue = manager.getTotalRevenueForDate(today);
+function getManagerRevenue(date) {
+  const revenue = manager.getTotalRevenueForDate(date);
   displayManagerRevenue(revenue);
 }
 
@@ -369,11 +370,11 @@ function displayManagerRevenue(revenue) {
   managerRevenueSymbol.innerText = '$';
   managerRevenueDollars.innerText = splitTotal[0];
   managerRevenueDecimal.innerText = '.';
-  managerRevenueCents.innerText = splitTotal[1];
+  managerRevenueCents.innerText = splitTotal[1] || '0';
 }
 
-function getManagerPercentageOccupied() {
-  const percentage = manager.getPercentageOccupied(today);
+function getManagerPercentageOccupied(date) {
+  const percentage = manager.getPercentageOccupied(date);
   displayManagerPercentageOccupied(percentage);
 }
 
@@ -382,4 +383,9 @@ function displayManagerPercentageOccupied(percentage) {
   managerPercentageOccupiedSymbol.innerText = '';
   managerPercentageOccupiedValue.innerText = percentage;
   managerPercentageOccupiedSymbol.innerText = '%';
+}
+
+function updateManagerInfo(date) {
+  getManagerRevenue(date);
+  getManagerPercentageOccupied(date);
 }
