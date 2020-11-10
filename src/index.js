@@ -151,13 +151,13 @@ function createCustomerDashboard() {
 }
 
 function createManagerDashboard() {
-  managerName.innerText = '';
   displayAvailableRooms(today, manager);
 }
 
 function displayAvailableRooms(date, user) {
   if(user === customer) {
     const allAvailableRooms = user.searchAvailableRoomsByDate(date);
+    console.log(allAvailableRooms);
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
       <div class="room-card">
