@@ -1,6 +1,7 @@
 import './css/base.scss';
 import'./images/overlook.png';
 import'./images/hotel.png';
+import'./images/user.png';
 import Customer from './Customer';
 import Manager from './Manager';
 import {fetchAPI} from './API';
