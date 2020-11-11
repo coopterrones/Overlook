@@ -1,5 +1,0 @@
-const domDisplay = {
-
-}
-
-export {domDisplay};
