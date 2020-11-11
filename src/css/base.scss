@@ -66,7 +66,7 @@ body {
   font-family: $cabin-font;
 }
 
-.username-input {
+@mixin login-input-standard {
   margin: 1em;
   margin-bottom: 0;
   border-style: none;
@@ -77,6 +77,10 @@ body {
   color: $dark-grey;
   background-color:$frost-white;
   box-shadow: $box-shadow-standard;
+}
+
+.username-input {
+  @include login-input-standard;
 }
 
 .username-input:focus{
@@ -692,6 +696,15 @@ body {
     margin-left: 1em;
   }
 
+  @mixin amount-spent-re-scale {
+    transform: scale(.65);
+  }
+
+  @mixin mobile-bookings {
+    height: 35vh;
+    width: 100vw;
+  }
+
   .room-card {
     margin: 0;
   }
@@ -726,6 +739,18 @@ body {
     width: auto;
   }
 
+  .customer-amount-spent {
+    @include amount-spent-re-scale;
+  }
+
+  .manager-amount-spent {
+    @include amount-spent-re-scale;
+  }
+
+  .amount-spent-label {
+    transform: scale(1.5);
+  }
+
   .customer-available-rooms {
     @include mobile-available-rooms-wrap;
   }
@@ -735,13 +760,11 @@ body {
   }
 
   .customer-bookings {
-    height: 35vh;
-    width: 100vw;
+    @include mobile-bookings;
   }
 
   .manager-bookings {
-    height: 35vh;
-    width: 100vw;
+    @include mobile-bookings;
   }
 
   .manager-bookings-heading {
@@ -770,7 +793,7 @@ body {
     background-color: #E0E5EC;
     box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
     width: 85%;
-}
+  }
 }
 
 :focus {
