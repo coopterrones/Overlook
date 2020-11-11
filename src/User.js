@@ -56,6 +56,6 @@ class User {
        return userInfo ? userInfo : 'Please enter a valid username and password.';
   };
 
-}
+};
 
 export default User;

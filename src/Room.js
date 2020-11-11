@@ -5,7 +5,7 @@ class Room {
     this.bidet = bidet;
     this.bedSize = bedSize;
     this.costPerNight = costPerNight;
-  }
-}
+  };
+};
 
 export default Room;

@@ -1,10 +1,4 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-// // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-// import './images/user.png';
 import'./images/overlook.png';
 import'./images/hotel.png';
 import Customer from './Customer';
@@ -25,12 +19,10 @@ Promise.all([fetchAPI.fetchUsers(), fetchAPI.fetchRooms(), fetchAPI.fetchBooking
   bookingData = values[2]['bookings'];
 });
 
-
 let today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0');
 let yyyy = today.getFullYear();
-
 today = yyyy + '/' + mm + '/' + dd;
 
 const loginButton = document.querySelector('.login-button');
@@ -108,7 +100,7 @@ function createCustomer(userInfo) {
 
 function createManager(user) {
   manager = user;
-}
+};
 
 function displayCustomerDashboard() {
   date = today;
@@ -127,14 +119,14 @@ function displayManagerDashboard() {
   createManagerDashboard();
   getManagerRevenue(today);
   getManagerPercentageOccupied(today);
-}
+};
 
 function updateCustomerAvailableRooms() {
   customerAvailableRooms.innerText = '';
   date = customerDateInput.value.replace(/-/g, "/");
   const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
   displayAvailableRooms(date, customer);
-}
+};
 
 function updateManagerAvailableRooms() {
   managerAvailableRooms.innerText = '';
@@ -142,23 +134,23 @@ function updateManagerAvailableRooms() {
   const allAvailableRooms = manager.searchAvailableRoomsByDate(date);
   displayAvailableRooms(date, manager);
   updateManagerInfo(date, manager);
-}
+};
 
 function clearInputs(input) {
   usernameInput.value = '';
   passwordInput.value = '';
-}
+};
 
 function createCustomerDashboard() {
   customerName.innerText = customer.name;
   displayAvailableRooms(today, customer);
   getCustomerBookings();
   getTotalSpent(customer);
-}
+};
 
 function createManagerDashboard() {
   displayAvailableRooms(today, manager);
-}
+};
 
 function displayAvailableRooms(date, user) {
   if(user === customer) {
@@ -220,7 +212,7 @@ function displayAvailableRooms(date, user) {
   })
   }
   }
-}
+};
 
 function getCustomerBookings() {
   const allBookings = customer.bookings.reduce((allBookings, booking) => {
@@ -232,7 +224,7 @@ function getCustomerBookings() {
   return allBookings;
   }, [])
   displayCustomerBookings(allBookings);
-}
+};
 
 function displayCustomerBookings(bookings) {
   bookings.forEach((booking) => {
@@ -245,7 +237,7 @@ function displayCustomerBookings(bookings) {
     `
   customerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
-}
+};
 
 function filterCustomerRoomsByType() {
   date = customerDateInput.value.replace(/-/g, "/") || today;
@@ -260,7 +252,7 @@ function filterCustomerRoomsByType() {
   return allFiltered;
   }, [])
   displayCustomerFilteredRooms(allFilteredRooms);
-}
+};
 
 function filterManagerRoomsByType() {
   date = managerDateInput.value.replace(/-/g, "/") || today;
@@ -275,7 +267,7 @@ function filterManagerRoomsByType() {
   return allFiltered;
   }, [])
   displayManagerFilteredRooms(allFilteredRooms);
-}
+};
 
 function displayCustomerFilteredRooms(allFilteredRooms) {
   customerAvailableRooms.innerHTML = '';
@@ -297,7 +289,7 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
     `
     customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
   })
-}
+};
 
 function displayManagerFilteredRooms(allFilteredRooms) {
   managerAvailableRooms.innerHTML = '';
@@ -319,7 +311,7 @@ function displayManagerFilteredRooms(allFilteredRooms) {
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
   })
-}
+};
 
 function searchCustomers() {
   const customerInput = customerSearchInput.value;
@@ -328,7 +320,7 @@ function searchCustomers() {
   managerName.innerText = customer.name;
   getCustomerBookingsForManager(customer)
   getTotalSpent(manager)
-}
+};
 
 function getCustomerBookingsForManager(customer) {
   const allBookings = customer.bookings.reduce((allBookings, booking) => {
@@ -340,7 +332,7 @@ function getCustomerBookingsForManager(customer) {
   return allBookings;
   }, [])
   displayManagerViewBookings(allBookings);
-}
+};
 
 function displayManagerViewBookings(bookings) {
   managerBookings.innerHTML = '';
@@ -355,13 +347,13 @@ function displayManagerViewBookings(bookings) {
     `
   managerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
-}
+};
 
 
 function getTotalSpent(user) {
   const totalSpent = user.getCustomerTotalSpent(customer)
   displayCustomerAmountSpent(totalSpent, user);
-}
+};
 
 function displayCustomerAmountSpent(totalSpent, user) {
   if (user === manager) {
@@ -389,12 +381,12 @@ function displayCustomerAmountSpent(totalSpent, user) {
   customerSpentDecimal.innerText = '.';
   customerCentsSpent.innerText = splitTotal[1];
   }
-}
+};
 
 function getManagerRevenue(date) {
   const revenue = manager.getTotalRevenueForDate(date);
   displayManagerRevenue(revenue);
-}
+};
 
 function displayManagerRevenue(revenue) {
   managerRevenueSymbol.innrText = '';
@@ -407,24 +399,24 @@ function displayManagerRevenue(revenue) {
   managerRevenueDollars.innerText = splitTotal[0];
   managerRevenueDecimal.innerText = '.';
   managerRevenueCents.innerText = splitTotal[1] || '0';
-}
+};
 
 function getManagerPercentageOccupied(date) {
   const percentage = manager.getPercentageOccupied(date);
   displayManagerPercentageOccupied(percentage);
-}
+};
 
 function displayManagerPercentageOccupied(percentage) {
   managerPercentageOccupiedValue.innerText = '';
   managerPercentageOccupiedSymbol.innerText = '';
   managerPercentageOccupiedValue.innerText = percentage;
   managerPercentageOccupiedSymbol.innerText = '%';
-}
+};
 
 function updateManagerInfo(date) {
   getManagerRevenue(date);
   getManagerPercentageOccupied(date);
-}
+};
 
 function selectARoom(event) {
   let roomNumber = parseInt(event.target.parentNode.id);
@@ -435,7 +427,7 @@ function selectARoom(event) {
     } else {
       return undefined;
     }
-}
+};
 
 function makeBooking() {
   newBooking.date = date;
@@ -446,13 +438,13 @@ function makeBooking() {
   } else {
     alert('Please provide a customer to add a booking')
   }
-}
+};
 
 function addBooking(customer) {
   newBooking.userID = customer.id;
   fetchAPI.postBooking(newBooking);
   displayAvailableRooms(date, customer);
-}
+};
 
 function selectBooking(event) {
   let bookingId = (event.target.parentNode.id)
@@ -471,7 +463,7 @@ function selectBooking(event) {
   } else if (cancel === false) {
     alert('Please Choose Another Booking')
   }
-}
+};
 
 function deleteBooking(idInput) {
   let numberId = parseInt(idInput);
@@ -479,10 +471,10 @@ function deleteBooking(idInput) {
   deleteLocalBooking(idInput);
   udpateCustomerAvailableRooms();
   updateManagerAvailableRooms();
-}
+};
 
 function deleteLocalBooking(id) {
   bookingData = bookingData.filter((booking) => {
     return !booking.id === id;
   })
-}
+};
