@@ -1,9 +1,9 @@
 import User from './User';
 
-class Manager extends User{
+class Manager extends User {
   constructor(id, name, userData, roomData, bookingData) {
     super(id, name, userData, roomData, bookingData);
-  };
+  }
 
   getTotalRevenueForDate(date) {
     const totalRevenueForToday = this.bookings.reduce((total, booking) => {
@@ -16,7 +16,7 @@ class Manager extends User{
     }, 0);
     const roundedAmount = totalRevenueForToday.toFixed(2)
     return parseFloat(roundedAmount);
-  };
+  }
 
   getPercentageOccupied(date) {
     const occupied = this.bookings.reduce((sum, booking) => {
@@ -27,9 +27,9 @@ class Manager extends User{
       })
       return sum;
     }, 0)
-   let average = (occupied / this.rooms.length) * 100;
-   return average.toFixed();
-  };
+    let average = (occupied / this.rooms.length) * 100;
+    return average.toFixed();
+  }
 
   getCustomerById(id) {
     const splitUsername = id.split('customer');
@@ -38,7 +38,7 @@ class Manager extends User{
       return user.id === intID;
     })
     return currentUser;
-  };
-};
+  }
+}
 
 export default Manager;
