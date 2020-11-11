@@ -154,45 +154,54 @@ function createManagerDashboard() {
 
 function displayAvailableRooms(date, user) {
   if(user === customer) {
-    const allAvailableRooms = user.searchAvailableRoomsByDate(date);
-    if (typeof allAvailableRooms === "string") {
-      let roomInfo = `
-      <div class="room-card">
-        <p> ${allAvailableRooms} </p>
+    displayCustomerAvailableRooms(date, user);
+  } else if (user === manager) {
+    displayManagerAvailableRooms(date, user);
+  }
+}
+
+function displayCustomerAvailableRooms(date, user) {
+  const allAvailableRooms = user.searchAvailableRoomsByDate(date);
+  if (typeof allAvailableRooms === "string") {
+    let roomInfo = `
+    <div class="room-card">
+      <p> ${allAvailableRooms} </p>
+    </div>
+    `
+  customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
+} else {
+  allAvailableRooms.forEach((room) => {
+    let roomInfo = `
+    <div id="${room.number}" class="room-card" tabindex="0">
+      <div class="room-card-break-one">
+        <p>Room Number: ${room.number}</p>
+        <p>Type: ${room.roomType}</p>
+        <p>Bidet: ${room.bidet}</p>
       </div>
-      `
+      <div class="room-card-break-two">
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Beds: ${room.numBeds}</p>
+        <p>Cost Per Night: $${room.costPerNight}</p>
+      </div>
+      <button class="book-room-button" type="button" name="button" tabindex="0">Book</button>
+    </div>
+    `
     customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
-  } else {
-    allAvailableRooms.forEach((room) => {
-      let roomInfo = `
-      <div id="${room.number}" class="room-card" tabindex="0">
-        <div class="room-card-break-one">
-          <p>Room Number: ${room.number}</p>
-          <p>Type: ${room.roomType}</p>
-          <p>Bidet: ${room.bidet}</p>
-        </div>
-        <div class="room-card-break-two">
-          <p>Bed Size: ${room.bedSize}</p>
-          <p>Beds: ${room.numBeds}</p>
-          <p>Cost Per Night: $${room.costPerNight}</p>
-        </div>
-        <button class="book-room-button" type="button" name="button" tabindex="0">Book</button>
-      </div>
-      `
-      customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
     })
   }
-  } else if (user === manager) {
-    const allAvailableRooms = user.searchAvailableRoomsByDate(date);
-    if (typeof allAvailableRooms === "string") {
-      let roomInfo = `
-      <div class="room-card">
-        <p> ${allAvailableRooms} </p>
-      </div>
-      `
-    managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
+}
+
+function displayManagerAvailableRooms(date, user) {
+  const allAvailableRooms = user.searchAvailableRoomsByDate(date);
+  if (typeof allAvailableRooms === "string") {
+    let roomInfo = `
+    <div class="room-card">
+      <p> ${allAvailableRooms} </p>
+    </div>
+    `
+  managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
   } else {
-    allAvailableRooms.forEach((room) => {
+  allAvailableRooms.forEach((room) => {
     let roomInfo = `
     <div id="${room.number}" class="room-card" tabindex="0">
       <div class="room-card-break-one">
@@ -209,10 +218,9 @@ function displayAvailableRooms(date, user) {
     </div>
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
-  })
+    })
   }
-  }
-};
+}
 
 function getCustomerBookings() {
   const allBookings = customer.bookings.reduce((allBookings, booking) => {
@@ -348,7 +356,6 @@ function displayManagerViewBookings(bookings) {
   managerBookings.insertAdjacentHTML('beforeend', bookingInfo);
   })
 };
-
 
 function getTotalSpent(user) {
   const totalSpent = user.getCustomerTotalSpent(customer)
