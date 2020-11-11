@@ -41,6 +41,21 @@ class User {
     const roundedAmount = amount.toFixed(2);
     return parseFloat(roundedAmount);
   };
+
+  userLogin(username, password, users) {
+    let splitUsername = username.split('customer');
+       const userInfo = users.find((user) => {
+         if (password === 'overlook2020' && splitUsername[1] < 51) {
+           return user.id === parseInt(splitUsername[1]);
+         } else if (password === 'overlook2020' && username === 'manager')
+           return user.id === 'manager';
+         else {
+           return undefined;
+         }
+       })
+       return userInfo ? userInfo : 'Please enter a valid username and password.';
+  };
+
 }
 
 export default User;

@@ -1,11 +1,18 @@
 //Colors
 $dark-grey: #212529;
-$mid-grey: #495057;
-$light-grey: #adb5bd;
-$grey-white: #dee2e6;
 $light-white: #f8f9fa;
 $cabin-font: Cabin, sans-serif;
-
+$frost-white: #E0E5EC;
+$box-shadow-standard: 9px 9px 16px
+rgba(163,177,198,0.6), -9px -9px 16px
+rgba(255,255,255, 0.5);
+$box-shadow-focus: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+$box-shadow-hover-background: linear-gradient(145deg, #f0f5fd, #caced4);
+$box-shadow-hover: 20px 20px 60px #bec3c9,
+             -20px -20px 60px #ffffff;
+$box-shadow-active: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
 
 //fonts
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
