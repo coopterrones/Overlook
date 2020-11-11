@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Overlook Hotel</title>
+  </head>
+  <body>
+    <section class="login-screen">
+      <div class="overlook-logo">
+      </div>
+      <div class="login-layout">
+        <div class="login-inputs">
+          <input class="username-input" id="usernameInput"type="text" name="usernameInput" tabindex="0">
+          <label id="usernameInputLabel"for="usernameInput">username</label>
+          <input class="password-input" id="passwordInput" type="text" name="passwordInput" tabindex="0">
+          <label id="passwordInputLabel" for="passwordInput">password</label>
+          <div class="login-buttons">
+            <button class="clear-button" type="button" name="button">Clear</button tabindex="0">
+            <button class="login-button" type="button" name="button">Login</button tabindex="0" >
+          </div>
+        </div>
+      </div>
+    </section>
+  <section class="customer-layout hidden">
+    <section class= "customer-view">
+      <section class="user-info">
+        <div class="room-inputs-container">
+          <input id="selectADate"class="customer-calendar-dropdown" type="date" name="selectADate" tabindex="0">
+          <!-- <label for="selectADate">date</label> -->
+          <form class="select-room-type" action="index.html">
+            <!-- <label for="roomTypes-customer">room type</label> -->
+            <select class="customer-room-type-dropdown" name="roomTypes" id="roomTypes-customer">
+              <option value="all rooms">All Rooms</option>
+              <option value="single room">Single Room</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="suite">Suite</option>
+              <option value="residential suite">Residential Suite</option>
+            </select>
+          </form>
+        </div>
+        <div class="customer-available-rooms">
+        </div>
+      </section>
+      <section class="customer-bookings-area hidden">
+        <section class="user-profile">
+          <section class="user-image-name-wrap">
+            <img class="user-img" src="./images/user.png" alt="user-profile-pics">
+            <p class="customer-name"></p>
+          </section>
+          <section class="customer-amount-spent">
+            <div class="customer-amount">
+              <sup class="customer-spent-symbol"></sup><p class="customer-dollars-spent"></p><p class="customer-amount-decimal"></p><sup class="customer-cents-spent"></sup>
+            </div>
+            <p class="amount-spent-label">Amount Spent</p>
+          </section>
+        </section>
+        <section class="customer-bookings">
+        </section>
+      </section>
+    </section>
+  </section>
+  <section class="manager-layout hidden">
+    <section class= "manager-view">
+      <section class="user-info">
+      <section class="manager-metrics-wrap">
+        <section class="manager-metrics">
+          <div class="manager-revenue">
+            <sup class="manager-revenue-symbol"></sup><p class="manager-revenue-dollars"></p><p class="manager-revenue-decimal"></p><sup class="manager-revenue-cents"></sup>
+          </div>
+          <p class="manager-percentage-label">Total Revenue</p>
+        </section>
+        <section class="manager-percentage-occupied">
+          <div class="manager-percentage">
+            <p class="manager-percentage-value"></p><sup class="manager-percentage-symbol"></sup>
+          </div>
+          <p class="manager-percentage-label">Percentage Occupied</p>
+        </section>
+      </section>
+        <div class="room-inputs-container">
+          <input id="manager-calendar" class="manager-calendar-dropdown" type="date" name="selectADate" tabindex="0">
+          <!-- <label for="manager-calendar">date</label> -->
+          <form class="select-room-type" action="index.html">
+            <!-- <label for="roomTypes-manager">room type</label> -->
+            <select class="manager-room-type-dropdown"name="roomTypes" id="roomTypes-manager">
+              <option value="all rooms">All Rooms</option>
+              <option value="single room">Single Room</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="suite">Suite</option>
+              <option value="residential suite">Residential Suite</option>
+            </select>
+          </form>
+        </div>
+        <div class="manager-available-rooms">
+        </div>
+      </section>
+      <section class="manager-bookings-area ">
+        <section class="user-profile">
+          <section class="user-image-name-wrap">
+            <img class="user-img" src="./images/user.png" alt="user-profile-pics">
+            <p class="manager-name">Customer</p>
+          </section>
+          <section class="manager-amount-spent">
+            <div class="manager-amount">
+              <sup class="manager-spent-symbol"></sup><p class="manager-dollars-spent"></p><p class="manager-amount-decimal"></p><sup class="manager-cents-spent"></sup>
+            </div>
+            <p class="manager-amount-spent-label">Amount Spent</p>
+          </section>
+        </section>
+        <div class="manager-search-wrap">
+          <input id="managerSearchInput" class="manager-search-input"type="text" placeholder="Customer Search" tabindex="0">
+          <!-- <label for="managerSearchInput">search customers</label> -->
+          <button class="manager-search-button" type="button" name="button" tabindex="0">Search</button>
+        </div>
+        <section class="manager-bookings">
+          <h2 class="manager-bookings-heading">Please Search For A Customer To Display Bookings</h2>
+        </section>
+      </section>
+    </section>
+  </section>
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
