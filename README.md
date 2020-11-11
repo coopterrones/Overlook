@@ -1,105 +1,67 @@
-# Webpack Starter Kit
+# Overlook
 
-## Clone This Repo
+[Cooper terrones](https://github.com/coopterrones) Overlook Version 1; Solo Final Project; Module 2
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Description
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+The Overlook hotel is in need of a new website. The site requires that users (customers or managers) can login and view separate dashboards. As customers, users should be able to view rooms available for a given date, filter rooms by type, and book a room that will post to an API. As managers, users should be able to view rooms available for given date, filter rooms by type, book rooms for customers, and delete future bookings for customers.
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Usage
 
-## Setup
+Navigate to Github and download the repo. Then:
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+* Run `npm start`
+* loging as a user of either manager or customer using the following credentials
+  * username: customer1 - customer50
+  * password: overlook2020
+  * username: manager
+  * password: overlook2020
+* navigate the site to select rooms and view their availability
+* book a room as a customer
+* search for customers as a manager
+* book rooms for customers
+* delete rooms for customers
 
-Then install the library dependencies. Run:
+## Timeline
 
-```bash
-npm install
-```
+This project was completed over a weeks time. The project is an initial mvp and will have the following updates moving forward
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+* Refactor of code -- top priority!
+* Class improvements
+* UI improvements to make the app more intuitive and accessible
+* Information improvements to copy and verbiage to mimic real world applications that are used for hotel management
+* Dark mode capabilities
+* Functionality improvements
 
-## Where to Add Your Code
+## Technologies and Resources
 
-### JavaScript
+New technologies used and learned in this project
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+* Webpack compiler
+* SASS / SCSS
+* FETCH API -- get , post , delete
 
-**Create all of your feature code files in the `src` directory.**
+Resources
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+* Git and Github for workflow
+* Atom as the text editor
+* Zoom for peer reviews and mentor meetings
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+## Screenshots
 
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./src` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### CSS (SCSS/SASS)
-
-This project is setup to use SCSS/SASS files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
-
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+### Login Screen
+[![login Screen](https://media.giphy.com/media/PckD4yP6fod3KcwDGK/giphy.gif)]
+### Customer dashboard
+[![Customer Dash](https://media.giphy.com/media/xn3J85PVZ7xVKipufF/giphy.gif)]
+### Manager Dashboard
+[![Manager Dash](https://media.giphy.com/media/uvZkrgBdFV43v7m2HR/giphy.gif)]
+### Search Dates
+[![Search Dates](https://media.giphy.com/media/URi8ydOyqknl4XYRsA/giphy.gif)]
+### Filter Rooms By Type
+[![Filter Rooms](https://media.giphy.com/media/3r3eVyJtxTGjZ8t4MA/giphy.gif)]
+### Search Customers Manager Dash
+[![Search Dates](https://media.giphy.com/media/uyxQiwqby0o3l3BQ7O/giphy.gif)]
+### Book a Room Customer Dash
+[![Book A Room](https://media.giphy.com/media/pPs0LaV2GNG6vtuBo4/giphy.gif)]
+### Delete A Room Manager Dash
+[![Book A Room](https://media.giphy.com/media/OGQ6OVqS62BkZr8KsK/giphy.gif)]
