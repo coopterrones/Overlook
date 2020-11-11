@@ -1,7 +1,4 @@
 @import 'variables';
-// /* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-// ;
 
 input:focus {
   outline: none !important;
@@ -25,10 +22,6 @@ body {
   width: 100vw;
 }
 
-.hotel-name {
-  margin: 0;
-}
-
 .login-screen {
   display: flex;
   flex-direction: column;
@@ -47,11 +40,6 @@ body {
   background-image: url('../images/hotel.png');
   height: 150px;
   width: 500px;
-}
-
-.welcome-greeting {
-  color: $dark-grey;
-  font-family: $cabin-font;
 }
 
 .login-layout{
@@ -79,47 +67,42 @@ body {
   box-shadow: $box-shadow-standard;
 }
 
+@mixin input-focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
+}
+
 .username-input {
   @include login-input-standard;
 }
 
 .username-input:focus{
-  cursor: pointer;
-  box-shadow: $box-shadow-focus;
+  @include input-focus;
 }
 
 .password-input {
-  margin: 1em;
-  margin-bottom: 0;
-  border-style: none;
-  border-radius:4px;
-  height: 5%;
-  width: 85%;
-  padding: 2%;
-  color: $dark-grey;
-  background-color:$frost-white;
-  box-shadow: $box-shadow-standard;
-  -webkit-text-security: circle;
+@include login-input-standard;
 }
 
 .password-input:focus{
-  cursor: pointer;
-  box-shadow: $box-shadow-focus;
+  @include input-focus;
+}
+
+@mixin input-labels {
+  font-size: 10px;
+  margin-left: 2em;
+  align-self: flex-start;
 }
 
 #usernameInputLabel {
-  font-size: 10px;
-  margin-left: 2em;
-  align-self: flex-start;
+  @include input-labels;
 }
 
 #passwordInputLabel {
-  font-size: 10px;
-  margin-left: 2em;
-  align-self: flex-start;
+  @include input-labels;
 }
 
-.book-room-button {
+@mixin button-styling-standard {
   margin-top: 0;
   height: 3em;
   width: 5em;
@@ -129,6 +112,10 @@ body {
   border-radius: 10%;
   background-color:$frost-white;
   box-shadow: $box-shadow-standard;
+}
+
+.book-room-button {
+  @include button-styling-standard;
 }
 
 .book-room-button:hover{
@@ -147,15 +134,7 @@ body {
 }
 
 .cancel-booking-button {
-  margin-top: 0;
-  height: 3em;
-  width: 5em;
-  border-style: none;
-  color: $dark-grey;
-  font-family: $cabin-font;
-  border-radius: 10%;
-  background-color:$frost-white;
-  box-shadow: $box-shadow-standard;
+  @include button-styling-standard;
 }
 
 .cancel-booking-button:hover{
@@ -189,7 +168,7 @@ body {
   margin-top: 3vh
 }
 
-.clear-button {
+@mixin login-button-styling {
   border-radius:4px;
   margin: 2.5em;
   margin-top: 0;
@@ -201,6 +180,10 @@ body {
   border-radius: 5px;
   background-color:$frost-white;
   box-shadow: $box-shadow-standard;
+}
+
+.clear-button {
+  @include login-button-styling
 }
 
 .clear-button:hover {
@@ -220,17 +203,7 @@ body {
 }
 
 .login-button {
-  border-radius:4px;
-  margin: 2.5em;
-  margin-top: 0;
-  width: 8em;
-  border-style: none;
-  padding: .5em;
-  color: $dark-grey;
-  font-family: $cabin-font;
-  border-radius: 5px;
-  background-color:$frost-white;
-  box-shadow: $box-shadow-standard;
+  @include login-button-styling
 }
 
 .login-button:hover {
@@ -249,7 +222,7 @@ body {
   box-shadow: $box-shadow-focus;
 }
 
-.customer-view {
+@mixin view-styling-standard {
   display: flex;
   flex-direction: row;
   font-family: $cabin-font;
@@ -257,12 +230,12 @@ body {
   height: 100%;
 }
 
+.customer-view {
+  @include view-styling-standard;
+}
+
 .manager-view {
-  display: flex;
-  flex-direction: row;
-  font-family: $cabin-font;
-  align-items: center;
-  height: 100%;
+  @include view-styling-standard;
 }
 
 .manager-metrics-wrap {
@@ -279,7 +252,7 @@ body {
   padding: 1em;
 }
 
-.manager-revenue {
+@mixin info-display-standard {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -291,10 +264,18 @@ body {
   box-shadow: $box-shadow-standard;
 }
 
-.manager-revenue-label {
+.manager-revenue {
+  @include info-display-standard;
+}
+
+@mixin info-label-standard {
   margin: 0;
   margin-top: 1em;
   text-align: center;
+}
+
+.manager-revenue-label {
+  @include info-label-standard;
 }
 
 .manager-percentage-occupied {
@@ -304,95 +285,80 @@ body {
 }
 
 .manager-percentage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 100px;
-  padding: 1em;
-  background-color: $frost-white;
-  border-radius: 5px;
-  box-shadow: $box-shadow-standard;
+  @include info-display-standard;
 }
 
 .manager-percentage-label {
-  margin: 0;
-  margin-top: 1em;
-  text-align: center;
+  @include info-label-standard;
+}
+
+@mixin calander-dropdown {
+  margin: 1em;
+  border-style: none;
+  border-radius:4px;
+  height: 25%;
+  width: 50%;
+  padding: 2%;
+  color: $dark-grey;
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-calendar-dropdown {
-  margin: 1em;
-  border-style: none;
-  border-radius:4px;
-  height: 25%;
-  width: 50%;
-  padding: 2%;
-  color: $dark-grey;
-  background-color:$frost-white;
-  box-shadow: $box-shadow-standard;
+  @include calander-dropdown;
+}
+
+@mixin calander-dropdown-focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
+  outline: blue !important;
 }
 
 .manager-calendar-dropdown:focus{
-  cursor: pointer;
-  box-shadow: $box-shadow-focus;
-  outline: blue !important;
+  @include calander-dropdown-focus;
 }
 
 .customer-calendar-dropdown {
-  margin: 1em;
-  border-style: none;
-  border-radius:4px;
-  height: 25%;
-  width: 50%;
-  padding: 2%;
-  color: $dark-grey;
-  background-color:$frost-white;
-  box-shadow: $box-shadow-standard;
+  @include calander-dropdown;
 }
 
 .customer-calendar-dropdown:focus{
-  cursor: pointer;
-  box-shadow: $box-shadow-focus;
-  outline: blue !important;
+  @include calander-dropdown-focus;
+}
+
+@mixin room-type-dropdown {
+  margin: 1em;
+  border-style: none;
+  border-radius: 4px;
+  height: 65%;
+  width: 85%;
+  padding: 2%;
+  color: #212529;
+  font-family: Cabin, sans-serif;
+  border-radius: 5px;
+  background-color: $frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-room-type-dropdown {
-  margin: 1em;
-  border-style: none;
-  border-radius: 4px;
-  height: 65%;
-  width: 85%;
-  padding: 2%;
-  color: #212529;
-  font-family: Cabin, sans-serif;
-  border-radius: 5px;
-  background-color: $frost-white;
-  box-shadow: $box-shadow-standard;
+  @include room-type-dropdown;
+}
+
+@mixin room-type-dropdown-focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 .manager-room-type-dropdown:focus {
-  cursor: pointer;
-  box-shadow: $box-shadow-focus;
+  @include room-type-dropdown-focus;
 }
 
 .customer-room-type-dropdown {
-  margin: 1em;
-  border-style: none;
-  border-radius: 4px;
-  height: 65%;
-  width: 85%;
-  padding: 2%;
-  color: #212529;
-  font-family: Cabin, sans-serif;
-  border-radius: 5px;
-  background-color: $frost-white;
-  box-shadow: $box-shadow-standard;
+  @include room-type-dropdown;
 }
 
 .customer-room-type-dropdown:focus {
-  cursor: pointer;
-  box-shadow: $box-shadow-focus;
+  @include room-type-dropdown-focus;
 }
 
 .user-info {
@@ -430,62 +396,65 @@ body {
   width: 85%;
 }
 
-.customer-amount-spent {
+@mixin amount-spent-standard {
   margin-bottom: 0;
   margin-top: 1em;
   padding: 1em;
+}
+
+.customer-amount-spent {
+  @include amount-spent-standard;
 }
 
 .manager-amount-spent {
-  margin-bottom: 0;
-  margin-top: 1em;
+  @include amount-spent-standard;
+}
+
+@mixin amount-standard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
   padding: 1em;
+  background-color: $frost-white;
+  border-radius: 5px;
+  box-shadow: $box-shadow-standard;
 }
 
 .customer-amount {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 100px;
-  padding: 1em;
-  background-color: $frost-white;
-  border-radius: 5px;
-  box-shadow: $box-shadow-standard;
+  @include amount-standard;
 }
 
 .manager-amount {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 100px;
-  padding: 1em;
-  background-color: $frost-white;
-  border-radius: 5px;
-  box-shadow: $box-shadow-standard;
+  @include amount-standard;
+}
+
+@mixin amount-spent-label-standard {
+  margin: 0;
+  margin-top: 1em;
+  text-align: center;
 }
 
 .amount-spent-label {
-  margin: 0;
-  margin-top: 1em;
-  text-align: center;
+  @include amount-spent-label-standard;
 }
 
 .manager-amount-spent-label {
+  @include amount-spent-label-standard;
+}
+
+@mixin name-standard {
   margin: 0;
   margin-top: 1em;
-  text-align: center;
 }
 
 .customer-name {
-  margin: 0;
-  margin-top: 1em;
+  @include name-standard;
 }
 
 .manager-name {
-  margin: 0;
-  margin-top: 1em;
+  @include name-standard;
 }
 
 .room-inputs-container {
@@ -495,12 +464,7 @@ body {
   width: 85%;
 }
 
-.room-cards {
-  height: 85%;
-  width: 25%;
-}
-
-.customer-available-rooms {
+@mixin available-rooms-standard {
   background-color:$frost-white;
   overflow: scroll;
   background-color: $frost-white;
@@ -509,14 +473,12 @@ body {
   overflow: scroll;
 }
 
+.customer-available-rooms {
+  @include available-rooms-standard;
+}
+
 .manager-available-rooms {
-  background-color:$frost-white;
-  overflow: scroll;
-  background-color: $frost-white;
-  height: 90%;
-  width: 85%;
-  padding: 1em;
-  overflow: scroll;
+  @include available-rooms-standard;
 }
 
 .room-card {
@@ -530,9 +492,7 @@ body {
   padding: 1em;
   color: black;
   background-color:$frost-white;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  box-shadow: $box-shadow-standard;
   width: 85%
 }
 
@@ -565,7 +525,7 @@ body {
   box-shadow: $box-shadow-focus;
 }
 
-.customer-bookings-area {
+@mixin bookings-area-standard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -575,15 +535,12 @@ body {
   background-color:$frost-white;
 }
 
+.customer-bookings-area {
+  @include bookings-area-standard;
+}
+
 .manager-bookings-area {
-  margin: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50vw;
-  height: 85vh;
-  border-radius: 7px;
-  background-color:$frost-white;
+  @include bookings-area-standard;
 }
 
 .bookings-header {
