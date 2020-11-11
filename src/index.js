@@ -173,7 +173,7 @@ function displayAvailableRooms(date, user) {
   } else {
     allAvailableRooms.forEach((room) => {
       let roomInfo = `
-      <div id="${room.number}" class="room-card">
+      <div id="${room.number}" class="room-card" tabindex="0">
         <div class="room-card-break-one">
           <p>Room Number: ${room.number}</p>
           <p>Type: ${room.roomType}</p>
@@ -184,7 +184,7 @@ function displayAvailableRooms(date, user) {
           <p>Beds: ${room.numBeds}</p>
           <p>Cost Per Night: $${room.costPerNight}</p>
         </div>
-        <button class="book-room-button" type="button" name="button">Book</button>
+        <button class="book-room-button" type="button" name="button" tabindex="0">Book</button>
       </div>
       `
       customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -202,7 +202,7 @@ function displayAvailableRooms(date, user) {
   } else {
     allAvailableRooms.forEach((room) => {
     let roomInfo = `
-    <div id="${room.number}" class="room-card">
+    <div id="${room.number}" class="room-card" tabindex="0">
       <div class="room-card-break-one">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
@@ -213,7 +213,7 @@ function displayAvailableRooms(date, user) {
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
       </div>
-      <button class="book-room-button" type="button" name="button">Book</button>
+      <button class="book-room-button" type="button" name="button" tabindex="0">Book</button>
     </div>
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -237,7 +237,7 @@ function getCustomerBookings() {
 function displayCustomerBookings(bookings) {
   bookings.forEach((booking) => {
     let bookingInfo = `
-    <div class="booking-card">
+    <div class="booking-card" tabindex="0">
       <p>Booking Confirmation: ${booking.id}</p>
       <p>Date: ${booking.date}</p>
       <p>Room Number: ${booking.roomNumber}</p>
@@ -248,7 +248,7 @@ function displayCustomerBookings(bookings) {
 }
 
 function filterCustomerRoomsByType() {
-  date = customerDateInput.value.replace(/-/g, "/");
+  date = customerDateInput.value.replace(/-/g, "/") || today;
   const allAvailableRooms = customer.searchAvailableRoomsByDate(date);
   let roomTypeSelection = customerRoomTypeInput.options[customerRoomTypeInput.selectedIndex].value;
   const allFilteredRooms = allAvailableRooms.reduce((allFiltered, room) => {
@@ -263,7 +263,7 @@ function filterCustomerRoomsByType() {
 }
 
 function filterManagerRoomsByType() {
-  date = managerDateInput.value.replace(/-/g, "/");
+  date = managerDateInput.value.replace(/-/g, "/") || today;
   const allAvailableRooms = manager.searchAvailableRoomsByDate(date);
   let roomTypeSelection = managerRoomTypeInput.options[managerRoomTypeInput.selectedIndex].value;
   const allFilteredRooms = allAvailableRooms.reduce((allFiltered, room) => {
@@ -281,7 +281,7 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
   customerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
-    <div id="${room.number}" class="room-card">
+    <div id="${room.number}" class="room-card" tabindex="0">
       <div class="room-card-break-one">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
@@ -292,7 +292,7 @@ function displayCustomerFilteredRooms(allFilteredRooms) {
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
       </div>
-      <button class="book-room-button" type="button" name="button">Book</button>
+      <button class="book-room-button" type="button" name="button" tabindex="0">Book</button>
     </div>
     `
     customerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -303,7 +303,7 @@ function displayManagerFilteredRooms(allFilteredRooms) {
   managerAvailableRooms.innerHTML = '';
   allFilteredRooms.forEach((room) => {
     let roomInfo = `
-    <div id="${room.number}" class="room-card">
+    <div id="${room.number}" class="room-card" tabindex="0">
       <div class="room-card-break-one">
         <p>Room Number: ${room.number}</p>
         <p>Type: ${room.roomType}</p>
@@ -314,7 +314,7 @@ function displayManagerFilteredRooms(allFilteredRooms) {
         <p>Beds: ${room.numBeds}</p>
         <p>Cost Per Night: $${room.costPerNight}</p>
       </div>
-      <button class="book-room-button" type="button" name="button">Book</button>
+      <button class="book-room-button" type="button" name="button" tabindex="0">Book</button>
     </div>
     `
     managerAvailableRooms.insertAdjacentHTML('beforeend', roomInfo);
@@ -346,11 +346,11 @@ function displayManagerViewBookings(bookings) {
   managerBookings.innerHTML = '';
   bookings.forEach((booking) => {
     let bookingInfo = `
-    <div id="${booking.id}"class="booking-card">
+    <div id="${booking.id}"class="booking-card" tabindex="0">
       <p>Booking Confirmation: ${booking.id}</p>
       <p>Date: ${booking.date}</p>
       <p>Room Number: ${booking.roomNumber}</p>
-      <button class="cancel-booking-button" type="button" name="button">Cancel</button>
+      <button class="cancel-booking-button" type="button" name="button" tabindex="0">Cancel</button>
     </div>
     `
   managerBookings.insertAdjacentHTML('beforeend', bookingInfo);
@@ -454,7 +454,7 @@ function addBooking(customer) {
   displayAvailableRooms(date, customer);
 }
 
-function selectBooking() {
+function selectBooking(event) {
   let bookingId = (event.target.parentNode.id)
   let dateText = event.target.parentNode.children[1].innerText;
   let splitDate = dateText.split('Date:');
@@ -468,6 +468,8 @@ function selectBooking() {
     deleteBooking(bookingId);
   } else if (cancel === true && dateInts[0] <= todayInts[0] || dateInts[1] <= todayInts[1] || dateInts[2] <= todayInts[2]) {
     alert('You cannot delete a booking that has already occured');
+  } else if (cancel === false) {
+    alert('Please Choose Another Booking')
   }
 }
 
@@ -480,7 +482,6 @@ function deleteBooking(idInput) {
 }
 
 function deleteLocalBooking(id) {
-  console.log();
   bookingData = bookingData.filter((booking) => {
     return !booking.id === id;
   })

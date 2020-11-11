@@ -16,22 +16,13 @@ html {
 }
 
 body {
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
-}
-
-.header-bar {
-  background-color: $dark-grey;
-  color: $light-white;
-  margin: none;
-  height: 5%;
-  padding: 1%;
-  font-family: $cabin-font;
 }
 
 .hotel-name {
@@ -70,7 +61,7 @@ body {
   justify-content: center;
   height: 35vh;
   width: 75vh;
-  background-color:#E0E5EC;
+  background-color:$frost-white;
   border-radius: 5px;
   font-family: $cabin-font;
 }
@@ -84,16 +75,13 @@ body {
   width: 85%;
   padding: 2%;
   color: $dark-grey;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .username-input:focus{
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-focus;
 }
 
 .password-input {
@@ -105,16 +93,14 @@ body {
   width: 85%;
   padding: 2%;
   color: $dark-grey;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
+  -webkit-text-security: circle;
 }
 
 .password-input:focus{
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-focus;
 }
 
 #usernameInputLabel {
@@ -127,6 +113,61 @@ body {
   font-size: 10px;
   margin-left: 2em;
   align-self: flex-start;
+}
+
+.book-room-button {
+  margin-top: 0;
+  height: 3em;
+  width: 5em;
+  border-style: none;
+  color: $dark-grey;
+  font-family: $cabin-font;
+  border-radius: 10%;
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
+}
+
+.book-room-button:hover{
+  cursor: pointer;
+  background: $box-shadow-hover-background;
+  box-shadow: $box-shadow-hover;
+}
+
+.book-room-button:active {
+  cursor: pointer;
+  box-shadow: $box-shadow-active;
+}
+
+.book-room-button:focus {
+  box-shadow: $box-shadow-focus;
+}
+
+.cancel-booking-button {
+  margin-top: 0;
+  height: 3em;
+  width: 5em;
+  border-style: none;
+  color: $dark-grey;
+  font-family: $cabin-font;
+  border-radius: 10%;
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
+}
+
+.cancel-booking-button:hover{
+  cursor: pointer;
+  background: $box-shadow-hover-background;
+  box-shadow: $box-shadow-hover;
+}
+
+.cancel-booking-button:active {
+  cursor: pointer;
+  box-shadow: $box-shadow-active;
+}
+
+.cancel-booking-button:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 ::placeholder {
@@ -154,30 +195,25 @@ body {
   color: $dark-grey;
   font-family: $cabin-font;
   border-radius: 5px;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .clear-button:hover {
   cursor: pointer;
-  background: linear-gradient(145deg, #f0f5fd, #caced4);
-  box-shadow:  20px 20px 60px #bec3c9,
-               -20px -20px 60px #ffffff;
+  background: $box-shadow-hover-background;
+  box-shadow:  $box-shadow-hover;
 }
 
 .clear-button:active {
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-active;
 }
 
-// .clear-button:hover {
-//   cursor: pointer;
-//   box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-//   inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
-// }
+.clear-button:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
+}
 
 .login-button {
   border-radius:4px;
@@ -189,23 +225,24 @@ body {
   color: $dark-grey;
   font-family: $cabin-font;
   border-radius: 5px;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .login-button:hover {
   cursor: pointer;
-  background: linear-gradient(145deg, #f0f5fd, #caced4);
-  box-shadow:  20px 20px 60px #bec3c9,
-               -20px -20px 60px #ffffff;
+  background: $box-shadow-hover-background;
+  box-shadow:  $box-shadow-hover;
 }
 
 .login-button:active {
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-active;
+}
+
+.login-button:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 .customer-view {
@@ -245,9 +282,9 @@ body {
   height: 100px;
   width: 100px;
   padding: 1em;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   border-radius: 5px;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-revenue-label {
@@ -269,9 +306,9 @@ body {
   height: 100px;
   width: 100px;
   padding: 1em;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   border-radius: 5px;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-percentage-label {
@@ -288,16 +325,14 @@ body {
   width: 50%;
   padding: 2%;
   color: $dark-grey;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-calendar-dropdown:focus{
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-focus;
+  outline: blue !important;
 }
 
 .customer-calendar-dropdown {
@@ -308,16 +343,14 @@ body {
   width: 50%;
   padding: 2%;
   color: $dark-grey;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .customer-calendar-dropdown:focus{
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-focus;
+  outline: blue !important;
 }
 
 .manager-room-type-dropdown {
@@ -330,8 +363,13 @@ body {
   color: #212529;
   font-family: Cabin, sans-serif;
   border-radius: 5px;
-  background-color: #E0E5EC;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  background-color: $frost-white;
+  box-shadow: $box-shadow-standard;
+}
+
+.manager-room-type-dropdown:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 .customer-room-type-dropdown {
@@ -344,8 +382,13 @@ body {
   color: #212529;
   font-family: Cabin, sans-serif;
   border-radius: 5px;
-  background-color: #E0E5EC;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  background-color: $frost-white;
+  box-shadow: $box-shadow-standard;
+}
+
+.customer-room-type-dropdown:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 .user-info {
@@ -358,11 +401,9 @@ body {
 }
 
 .user-img {
-  background-color:#E0E5EC;
+  background-color:$frost-white;
   border-radius: 5px;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  box-shadow: $box-shadow-standard;
   margin-bottom: 0;
   margin-top: 1em;
   padding: 1em;
@@ -402,9 +443,9 @@ body {
   height: 100px;
   width: 100px;
   padding: 1em;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   border-radius: 5px;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-amount {
@@ -414,9 +455,9 @@ body {
   height: 100px;
   width: 100px;
   padding: 1em;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   border-radius: 5px;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-standard;
 }
 
 .amount-spent-label {
@@ -454,18 +495,18 @@ body {
 }
 
 .customer-available-rooms {
-  background-color:#E0E5EC;
+  background-color:$frost-white;
   overflow: scroll;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   height: 90%;
   width: 100%;
   overflow: scroll;
 }
 
 .manager-available-rooms {
-  background-color:#E0E5EC;
+  background-color:$frost-white;
   overflow: scroll;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   height: 90%;
   width: 85%;
   padding: 1em;
@@ -476,16 +517,22 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin: 1em;
   border-style: none;
   border-radius: 5px;
   padding: 1em;
   color: black;
-  background-color:#E0E5EC;
+  background-color:$frost-white;
   box-shadow: 9px 9px 16px
   rgba(163,177,198,0.6), -9px -9px 16px
   rgba(255,255,255, 0.5);
   width: 85%
+}
+
+.room-card:focus {
+  cursor: pointer;
+  box-shadow: inset $box-shadow-focus;
 }
 
 .room-card-break-one {
@@ -502,11 +549,14 @@ body {
   margin: 1em;
   padding: 1em;
   color: $dark-grey;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
   width: 85%
+}
+
+.booking-card:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 .customer-bookings-area {
@@ -516,7 +566,7 @@ body {
   width: 50vw;
   height: 85vh;
   border-radius: 7px;
-  background-color:#E0E5EC;
+  background-color:$frost-white;
 }
 
 .manager-bookings-area {
@@ -527,7 +577,7 @@ body {
   width: 50vw;
   height: 85vh;
   border-radius: 7px;
-  background-color:#E0E5EC;
+  background-color:$frost-white;
 }
 
 .bookings-header {
@@ -536,7 +586,7 @@ body {
 
 .customer-bookings {
   padding: 1em;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   width: 85%;
   height:75vh;
   overflow: scroll;
@@ -558,16 +608,13 @@ body {
   width: 75%;
   padding: 2%;
   color: $dark-grey;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow: $box-shadow-standard;
 }
 
 .manager-search-input:focus{
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-focus;
 }
 
 .manager-search-button {
@@ -580,28 +627,29 @@ body {
   color: $dark-grey;
   font-family: $cabin-font;
   border-radius: 5px;
-  background-color:#E0E5EC;
-  box-shadow: 9px 9px 16px
-  rgba(163,177,198,0.6), -9px -9px 16px
-  rgba(255,255,255, 0.5);
+  background-color:$frost-white;
+  box-shadow:$box-shadow-standard;
 }
 
 .manager-search-button:hover {
   cursor: pointer;
-  background: linear-gradient(145deg, #f0f5fd, #caced4);
-  box-shadow:  20px 20px 60px #bec3c9,
-               -20px -20px 60px #ffffff;
+  background: $box-shadow-hover-background;
+  box-shadow:  $box-shadow-hover;
 }
 
 .manager-search-button:active {
   cursor: pointer;
-  box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
-  inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: $box-shadow-active;
+}
+
+.manager-search-button:focus {
+  cursor: pointer;
+  box-shadow: $box-shadow-focus;
 }
 
 .manager-bookings {
   padding: 1em;
-  background-color: #E0E5EC;
+  background-color: $frost-white;
   width: 85%;
   height:75vh;
   overflow: scroll;
@@ -609,4 +657,8 @@ body {
 
 .hidden {
   display: none;
+}
+
+:focus {
+  outline: none;
 }
